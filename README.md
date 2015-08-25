@@ -1,13 +1,55 @@
-# multiplatform-test-app
-This is a test application to run on ios, wp8 and android
-
 ## Instruções para instalação
-baixar node.js em http://nodejs.org
+baixar e instalar node.js em http://nodejs.org
+baixar e instalar o github em https://windows.github.com/ (selecionar o modo bash)
 
-abri o terminal de comandos e entrar com os comandos:
+abrir o terminal de comandos e entrar com os comandos:
 
-```
+instalar o cordova/phonegap
+``
 npm install -g cordova
-```
+``
 
-instruções não terminadas, continua...
+baixar o projeto
+``
+git clone https://github.com/jhonasn/br.cnec.faculdadecampolargo.salva-vidas-op2
+``
+
+entrar na pasta do projeto, instalar a plataforma e o plugin do tts
+``
+cd br.cnec.faculdadecampolargo.salva-vidas-op2
+cordova platform add [wp8/ios/android] //escolher uma delas
+cordova plugin add com.wordsbaking.cordova.tts
+``
+
+ok, para framework que nos ajudara com o estilo e programação javascript após uma pesquisa achei o framework 7 um framework mais facil de usar, muito parecido com o jquery com bootstrap. para instalarmos ele no projeto usamos os comandos:
+``
+npm install bower
+bower install
+se bower install não instalar nada use bower install framework7
+``
+
+Podemos consultar mais sobre esse cara aqui:
+
+http://www.idangero.us/framework7/
+
+
+para debug em windows phone e ios instalar o weinre
+``
+npm install -g weinre
+``
+
+
+
+
+para utilização do weire conferir os links a seguir:
+
+http://stackoverflow.com/questions/11262236/ios-remote-debugging
+http://developer.telerik.com/featured/a-concise-guide-to-remote-debugging-on-ios-android-and-windows-phone/
+
+
+dependendo da plataforma escolhida deve ser feito o dowload do sdk de desenvolvimento apenas para que seja possivel fazer o build do projeto:
+
+http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_ios_index.md.html
+http://cordova.apache.org/docs/en/4.0.0/guide_platforms_win8_index.md.html
+https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html
+
