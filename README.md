@@ -21,6 +21,17 @@ cordova platform add [wp8/ios/android] //escolher uma delas
 cordova plugin add com.wordsbaking.cordova.tts
 ``
 
+Note que para instalar o plugin primeiro precisamos instalar a plataforma.
+
+Para reconhecimento de voz acredito que vamos poder usar ou o plugin do navegador ou este:
+
+https://github.com/macdonst/SpeechRecognitionPlugin
+
+para instalar ele no cordova usamos os comandos:
+```
+cordova plugin add https://github.com/macdonst/SpeechRecognitionPlugin
+```
+
 ok, para framework que nos ajudara com o estilo e programação javascript após uma pesquisa achei o framework 7 um framework mais facil de usar, muito parecido com o jquery com bootstrap e já vem com o estilo parecido com o ios.
 
 Podemos consultar para aprender como usar esse cara aqui:
