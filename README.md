@@ -21,14 +21,9 @@ cordova platform add [wp8/ios/android] //escolher uma delas
 cordova plugin add com.wordsbaking.cordova.tts
 ``
 
-ok, para framework que nos ajudara com o estilo e programação javascript após uma pesquisa achei o framework 7 um framework mais facil de usar, muito parecido com o jquery com bootstrap. para instalarmos ele no projeto usamos os comandos:
-``
-npm install bower
-bower install
-se bower install não instalar nada use bower install framework7
-``
+ok, para framework que nos ajudara com o estilo e programação javascript após uma pesquisa achei o framework 7 um framework mais facil de usar, muito parecido com o jquery com bootstrap e já vem com o estilo parecido com o ios.
 
-Podemos consultar mais sobre esse cara aqui:
+Podemos consultar para aprender como usar esse cara aqui:
 
 http://www.idangero.us/framework7/
 
@@ -52,4 +47,3 @@ dependendo da plataforma escolhida deve ser feito o dowload do sdk de desenvolvi
 http://cordova.apache.org/docs/en/2.5.0/guide_getting-started_ios_index.md.html
 http://cordova.apache.org/docs/en/4.0.0/guide_platforms_win8_index.md.html
 https://cordova.apache.org/docs/en/4.0.0/guide_platforms_android_index.md.html
-
