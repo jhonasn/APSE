@@ -8,6 +8,18 @@ $(document).ready(function() {
 			var id = $(this).attr('id')
 			alert('voce clicou no btn #{id}'.replace('{id}', id))
 		})
+	})
 
+	$('#reproduzir').click(function() {
+		var txt = $('#texto').val()
+		TTS.speak(
+			txt,
+			function() {
+				alert('terminou de reproduzir a bagaca')
+			},
+			function(reason) {
+				alert('Deu erro, segue: ', reason)
+			}
+			 )
 	})
 })
