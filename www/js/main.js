@@ -1,49 +1,65 @@
 $(document).ready(function() {
 	var svgDoc = $('#main-btns').get(0)
+	var contentHtml = null
 
 	$(svgDoc).on('load', function() {
 		svgDoc = svgDoc.contentDocument
 
 		$(svgDoc).find('g[id].clicable').click(function() {
 			var selecionado = $(this).attr('id')
-			var soso = null
+			var html = $(contentHtml)
 
 			switch(selecionado) {
 				case 'btn-fogo':
-					soso = 'fogo!'
+					selecionado = 'queimaduras'
 					break;
 				case 'btn-cabeca':
-					soso = 'cabeca!'
+					selecionado = 'epilepsia'
 					break;
 				case 'btn-mao-faca':
-					soso = 'olha faca!'
+					selecionado = 'cortes-hemorragia'
 					break;
 				case 'btn-cabeca-garganta':
-					soso = 'gargantilha!'
+					selecionado = 'engasgo'
 					break;
 				case 'btn-pessoa-caindo':
-					soso = 'cainndooooo!'
+					selecionado = 'quedas'
 					break;
 				case 'btn-mao-agua':
-					soso = 'to me afogano carae'
+					selecionado = 'afogamento'
 					break;
 				case 'btn-coracao':
-					soso = 'ae meo core'
+					selecionado = 'parada-cardiaca'
 					break;
 				case 'btn-carro':
-					soso = 'vrum vrummm'
+					selecionado = 'acidentes-transito'
 					break;
+				/*
 				case 'btn-logo':
-					soso = 'criko no meio.'
 					break;
+				*/
+			       default:
+				       selecionado = null
+				       break;
 
 			}
-			if(soso !== null) {
-				alert(soso)
+
+			if(selecionado !== null) {
+				var content = $(html).find('#' + selecionado)
+				console.log(content)
 			}
 		})
 	})
 
+	$.get('/templates/content.html')
+	.success(function(data) {
+		contentHtml = data
+	})
+	.error(function(err) {
+		alert('Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.')
+	})
+
+	/*
 	$('#reproduzir').click(function() {
 		var txt = $('#texto').val()
 		TTS.speak(
@@ -56,4 +72,5 @@ $(document).ready(function() {
 			}
 		)
 	})
+        */
 })

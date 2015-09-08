@@ -1,0 +1,22 @@
+{
+    "name": "br.cnec.faculdadecampolargo.salva-vidas-op2",
+    "version": "1.0.0",
+    "description": "O projeto APSE é um trabalho acadêmico apresentado a matéria de oficina de programação 2 das turmas de Sistemas de Informação da Faculdade Cenecista de Campo Largo",
+    "dependencies": {
+    },
+    "devDependencies": {
+    },
+    "cordovaPlugins": [
+        "org.apache.cordova.device",
+        "org.apache.cordova.console",
+        "org.apache.cordova.inappbrowser"
+    ],
+    "cordovaPlatforms": [
+	    "ios",
+	    "wp8",
+	    "android"
+    ],
+    "jshintConfig": {
+    	"asi": true
+    }
+}
