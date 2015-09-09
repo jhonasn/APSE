@@ -51,9 +51,10 @@ $(document).ready(function() {
 		})
 	})
 
-	$.get('/templates/content.html')
+	$.get('data/conteudo-telas.json')
 	.success(function(data) {
 		contentHtml = data
+		console.log('ok json pego:', data)
 	})
 	.error(function(err) {
 		alert('Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.')
