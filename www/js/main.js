@@ -21,8 +21,10 @@ $(document).ready(function() {
 
 			if(telaContent.hasOwnProperty('escolhas') && Array.isArray(telaContent.escolhas)) {
 				console.log('tela escolha preencher com:', telaContent)
+				abrirTelaEscolha(telaContent)
 			} else {
 				console.log('tela reproducao preencher com:', telaContent)
+				abrirTelaReproducao(telaContent)
 			}
 		})
 	})
@@ -39,14 +41,16 @@ $(document).ready(function() {
 	var abrirTelaReproducao = function(dadosTela) {
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
-			content.replace('{titulo}', dadosTela.titulo)
-				.replace('{icone}', dadosTela.icone)
+			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
+				.replace(/\{icone\}/g, dadosTela.icone)
+
 			content = $(content)
 
 			var instrucoesTemplate = $(content).find('#instrucoes').clone()
 			dadosTela.instrucoes.forEach(function(i) {
 				var template = $(instrucoesTemplate).clone()
 			})
+
 			$('#content').html(content)
 		})
 		.error(function(err) {
@@ -57,8 +61,10 @@ $(document).ready(function() {
 	var abrirTelaEscolha = function(dadosTela) {
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
-			content.replace('{titulo}', dadosTela.titulo)
-				.replace('{icone}', dadosTela.icone)
+			/*content = content.replace(/\{titulo\}/g, dadosTela.titulo)
+				.replace(/\{icone\}/g, dadosTela.icone)
+*/
+
 			content = $(content)
 
 			/*
@@ -66,8 +72,9 @@ $(document).ready(function() {
 			dadosTela.instrucoes.forEach(function(i) {
 				var template = $(instrucoesTemplate).clone()
 			})
-			$('#content').html(content)
 		        */
+
+			$('#content').html(content)
 		})
 		.error(function(err) {
 			alert(mensagemErro)
