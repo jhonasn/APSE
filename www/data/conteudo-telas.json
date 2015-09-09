@@ -2,6 +2,7 @@
 	"telas": [
 		{
 			"id": "acidentes-transito",
+			"icone": "btn-carro",
 			"titulo": "Acidentes de Trânsito",
 			"descricao": "",
 			"instrucoes": [
@@ -19,6 +20,7 @@
 		},
 		{
 			"id": "epilepsia",
+			"icone": "btn-cabeca",
 			"titulo": "Epilepsia",
 			"descricao": "",
 			"instrucoes": [
@@ -33,6 +35,7 @@
 		},
 		{
 			"id": "parada-cardiaca",
+			"icone": "btn-coracao",
 			"titulo": "Parada Cardíaca",
 			"descricao": "",
 			"instrucoes": [
@@ -46,10 +49,12 @@
 		},
 		{
 			"id": "queimaduras",
+			"icone": "btn-fogo",
 			"titulo": "Queimaduras",
 			"escolhas": [
 				{
 					"id": "queimaduras-1-grau",
+					"icone": "btn-verde-claro",
 					"titulo": "1º grau",
 					"descricao": "Queimadura que fica vermelhidão e ardência na área afetada",
 					"instrucoes": [
@@ -62,6 +67,7 @@
 				},
 				{
 					"id": "queimaduras-2-grau",
+					"icone": "btn-amarelo",
 					"titulo": "2º grau",
 					"descricao": "Aparecem bolhas no local afetado",
 					"instrucoes": [
@@ -77,6 +83,7 @@
 				},
 				{
 					"id": "queimaduras-3-grau",
+					"icone": "btn-vermelho",
 					"titulo": "3º grau",
 					"descricao": "Atingem uma área profunda da pele",
 					"instrucoes": [
@@ -94,10 +101,12 @@
 		},
 		{
 			"id": "engasgo",
+			"icone": "btn-cabeca-garganta",
 			"titulo": "Engasgo",
 			"escolhas": [
 				{
 					"id": "engasgo-bebes-criancas",
+					"icone": "btn-amarelo",
 					"titulo": "Engasgo Bebês e Crianças",
 					"descricao": "",
 					"instrucoes": [
@@ -112,6 +121,7 @@
 				},
 				{
 					"id": "engasgo-adulto",
+					"icone": "btn-vermelho",
 					"titulo": "Engasgo Adulto",
 					"descricao": "",
 					"instrucoes": [
@@ -127,6 +137,7 @@
 		},
 		{
 			"id": "afogamento",
+			"icone": "btn-mao-agua",
 			"titulo": "Afogamento",
 			"descricao": "",
 			"instrucoes": [
@@ -140,6 +151,7 @@
 		},
 		{
 			"id": "quedas",
+			"icone": "btn-pessoa-caindo",
 			"titulo": "Quedas",
 			"descricao": "",
 			"instrucoes": [
@@ -154,10 +166,12 @@
 		},
 		{
 			"id": "cortes-hemorragia",
+			"icone": "btn-mao-faca",
 			"titulo": "Cortes e Hemorragia",
 			"escolhas": [
 				{
 					"id": "cortes",
+					"icone": "btn-verde-claro",
 					"titulo": "Cortes",
 					"descricao": "",
 					"instrucoes": [
@@ -171,6 +185,7 @@
 				},
 				{
 					"id": "hemorragia-externa",
+					"icone": "btn-vermelho",
 					"titulo": "Hemorragia Externa",
 					"descricao": "É o tipo de sangramento exterior ao corpo, ou seja, que é facilmente visível. Pode ocorrer em camadas superficiais da pele por corte ou perfurações, ou mesmo atingindo áreas mais profundas através de aberturas ou orifícios gerados por traumas.\nÉ necessário manter e transmitir a calma diante da situação, passando à vítima confiança.",
 					"instrucoes": [
@@ -196,6 +211,7 @@
 		{
 			"_comment": "template TelaReproducao",
 			"id": "template",
+			"icone": "btn-template",
 			"titulo": "",
 			"descricao": "",
 			"instrucoes": [
@@ -206,10 +222,12 @@
 		{
 			"_comment": "template TelaEscolha (2 escolhas)",
 			"id": "template",
+			"icone": "btn-template",
 			"titulo": "Template",
 			"escolhas": [
 				{
 					"id": "",
+					"icone": "btn-template",
 					"titulo": "",
 					"descricao": "",
 					"instrucoes": [
@@ -219,6 +237,7 @@
 				},
 				{
 					"id": "",
+					"icone": "btn-template",
 					"titulo": "",
 					"descricao": "",
 					"instrucoes": [
