@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	debugger
+	app.ready()
 	var svgDoc = $('#btns-player').get(0)
 
 	$(svgDoc).on('load', function() {
@@ -11,24 +13,28 @@ $(document).ready(function() {
 			switch(selecionado) {
 				case 'btn-play':
 					tst = 'play'
-					break
+				break
 				case 'btn-pause':
 					tst = 'pause'
-					break
+				break
 				case 'btn-stop':
 					tst = 'pause'
-					break
+				break
 				case 'btn-foward':
 					tst = 'foward'
-					break
-				case 'btn-back':
+				break
+				case 'btn-backward':
 					tst = 'back'
-					break
+				break
 				default:
 					break
 			}
+
+			alert('teste: ' + tst)
 		})
-		
-		alert('teste: ', tst)
+	})
+
+	$('#btn-phone').click(function(e) {
+		alert('ligar não sei pra onde...')
 	})
 })

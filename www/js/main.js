@@ -1,4 +1,18 @@
+var app = {
+	ready: function() {
+		var btnHome = $('#btn-home')
+		if(btnHome.length) {
+			$(btnHome).off('click')
+			$(btnHome).click(function(e) {
+				window.location.href = ''
+			})
+		}
+	}
+}
+
 $(document).ready(function() {
+	app.ready()
+
 	var svgDoc = $('#main-btns').get(0)
 	var content = null
 	var mensagemErro = 'Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.'
