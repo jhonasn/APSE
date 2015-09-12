@@ -60,9 +60,16 @@ $(document).ready(function() {
 
 			content = $(content)
 
-			var instrucoesTemplate = $(content).find('#instrucoes').clone()
-			dadosTela.instrucoes.forEach(function(i) {
-				var template = $(instrucoesTemplate).clone()
+			var instrucoesTemplate = $(content).filter('#instrucoes')
+			var instrucaoTemplate = $(instrucoesTemplate).children().first().get(0).outerHTML
+
+			$(instrucoesTemplate).empty()
+			
+			dadosTela.instrucoes.forEach(function(instrucao, i) {
+				var template = instrucaoTemplate
+							.replace(/\{instrucao\}/g, instrucao)
+							.replace(/\{id\}/g, i)
+				$(instrucoesTemplate).append(template)
 			})
 
 			$('#content').html(content)
