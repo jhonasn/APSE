@@ -7,6 +7,21 @@ var app = {
 				window.location.href = ''
 			})
 		}
+	},
+	dadosTelas: null,
+	dadosTela: null,
+	getDadosTelas: function() {
+		$.get('data/conteudo-telas.json')
+		.success(function(data) {
+			if(typeof data === 'string') {
+				app.dadosTelas = JSON.parse(data)
+			} else {
+				app.dadosTelas = data
+			}
+		})
+		.error(function(err) {
+			alert(mensagemErro)
+		})
 	}
 }
 
@@ -14,7 +29,6 @@ $(document).ready(function() {
 	app.ready()
 
 	var svgDoc = $('#main-btns').get(0)
-	var content = null
 	var mensagemErro = 'Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.'
 
 	$(svgDoc).on('load', function() {
@@ -23,7 +37,7 @@ $(document).ready(function() {
 		$(svgDoc).find('g[id].clicable').click(function() {
 			var selecionado = $(this).attr('id')
 
-			var telaContent = content.telas.filter(function(t) {
+			var telaContent = app.dadosTelas.telas.filter(function(t) {
 				return t.icone === selecionado
 			})
 
@@ -43,20 +57,12 @@ $(document).ready(function() {
 		})
 	})
 
-	$.get('data/conteudo-telas.json')
-	.success(function(data) {
-		content = data
-		console.log('ok json pego:', data)
-	})
-	.error(function(err) {
-		alert(mensagemErro)
-	})
-
 	var abrirTelaReproducao = function(dadosTela) {
+		app.dadosTela = dadosTela
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
-				.replace(/\{icone\}/g, dadosTela.icone)
+			.replace(/\{icone\}/g, dadosTela.icone)
 
 			content = $(content)
 
@@ -64,11 +70,11 @@ $(document).ready(function() {
 			var instrucaoTemplate = $(instrucoesTemplate).children().first().get(0).outerHTML
 
 			$(instrucoesTemplate).empty()
-			
+
 			dadosTela.instrucoes.forEach(function(instrucao, i) {
 				var template = instrucaoTemplate
-							.replace(/\{instrucao\}/g, instrucao)
-							.replace(/\{id\}/g, i)
+				.replace(/\{instrucao\}/g, instrucao)
+				.replace(/\{id\}/g, i)
 				$(instrucoesTemplate).append(template)
 			})
 
@@ -80,20 +86,21 @@ $(document).ready(function() {
 	}
 
 	var abrirTelaEscolha = function(dadosTela) {
+		app.dadosTela = dadosTela
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
 			/*content = content.replace(/\{titulo\}/g, dadosTela.titulo)
-				.replace(/\{icone\}/g, dadosTela.icone)
-*/
+			  .replace(/\{icone\}/g, dadosTela.icone)
+			  */
 
 			content = $(content)
 
 			/*
-			var instrucoesTemplate = $(content).find('#instrucoes').clone()
-			dadosTela.instrucoes.forEach(function(i) {
-				var template = $(instrucoesTemplate).clone()
-			})
-		        */
+			   var instrucoesTemplate = $(content).find('#instrucoes').clone()
+			   dadosTela.instrucoes.forEach(function(i) {
+			   var template = $(instrucoesTemplate).clone()
+			   })
+			   */
 
 			$('#content').html(content)
 		})
@@ -102,18 +109,47 @@ $(document).ready(function() {
 		})
 	}
 
+	window.onscroll = function(e) {
+		if(window.scrollY > (window.screen.height * .2)) {
+			$('#scroll-top').fadeIn()
+		} else {
+			$('#scroll-top').fadeOut()
+		}
+	}
+
+	$('#scroll-top').click(function(e) {
+		//window.scroll(0, 0)
+		$('html,body').animate({ scrollTop: 0 }, 'slow')
+	})
+
+	var correcoesOrientacaoTela = function () {
+		$('body').css('min-height', window.screen.height + 'px')
+		var mainBtns = $('#main-btns')
+
+		if($(mainBtns).height() >= window.screen.height) {
+			$(mainBtns).height(window.screen.height - (window.screen.height * .2))
+		} else {
+			$(mainBtns).css('height', 'auto')
+		}
+
+		$(mainBtns).css('margin-top', (($(mainBtns).height() / 2) * -1) + 'px')
+	}
+
 	/*
-	   $('#reproduzir').click(function() {
-	   var txt = $('#texto').val()
-	   TTS.speak(
-	   txt,
-	   function() {
-	   alert('terminou de reproduzir a bagaca')
-	   },
-	   function(reason) {
-	   alert('Deu erro, segue: ', reason)
-	   }
-	   )
-	   })
-	   */
+	//isso n funciona certo, tem um delay estranho
+	window.addEventListener('orientationchange', function(){
+		var currentOrientation = ""
+
+		if (window.orientation === 90 || window.orientation === -90) {
+			currentOrientation = "landscape"
+		} else {
+			currentOrientation = "portrait"
+		}
+	})
+       */
+
+	window.onresize = correcoesOrientacaoTela
+
+	correcoesOrientacaoTela()
+	app.getDadosTelas()
 })
