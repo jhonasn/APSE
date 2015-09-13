@@ -94,6 +94,7 @@ var app = {
 	}
 }
 
+
 $(document).ready(function() {
 	app.ready()
 
@@ -165,6 +166,7 @@ $(document).ready(function() {
 
 	window.onresize = correcoesOrientacaoTela
 	$(document).on('deviceready', correcoesOrientacaoTela)
+	$(document).on('deviceready', window.navigator.splashscreen.hide)
 
 	correcoesOrientacaoTela()
 	app.getDadosTelas()

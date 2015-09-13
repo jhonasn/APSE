@@ -12,5 +12,5 @@ www/lib/
 .DS_Store
 npm-debug.log
 info.json
-lib/tempData
+res/
 *~

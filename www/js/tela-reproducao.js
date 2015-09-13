@@ -107,7 +107,7 @@ $(document).ready(function() {
 		$('#instrucoes').find('.list-group-item#{id}'.replace('{id}', id))
 					.addClass('active')
 		if(scrollWindow !== false) {
-			$('html,body').animate({ scrollTop: $('#instrucoes').find('.list-group-item.active').offset().top }, 'slow')
+			$('html,body').animate({ scrollTop: $('#instrucoes').find('.list-group-item.active').offset().top - (window.innerHeight / 2) }, 'slow')
 		}
 	}
 
