@@ -1,26 +1,32 @@
 ﻿$(document).ready(function () {
 	debugger
-	var svgDoc = $('#maleta-btn').get(0)
+	$('.escolha').click(function() {
+		var obj = $(this).closest('.row').find('img')
+		var selecionado = $(obj).attr('id')
 
-	$(svgDoc).on('load', function () {
-		svgDoc = svgDoc.contentDocument
-
-		$(svgDoc).find('g[id]').click(function () {
-			var id = $(this).attr('id')
-			alert('voce clicou no btn #{id}'.replace('{id}', id))
+		var telaContent = app.dadosTela.escolhas.filter(function(t) {
+				return t.icone === selecionado
 		})
+
+		if(telaContent.length > 0) {
+			telaContent = telaContent[0]
+			telaContent.icone = app.dadosTela.icone
+		} else {
+			return
+		}
+
+		app.abrirTelaReproducao(telaContent)
 	})
 
-	$('#reproduzir').click(function () {
-		var txt = $('maleta louca').val()
-		TTS.speak(
-			txt,
-			function () {
-				alert('terminou de reproduzir a bagaca')
-			},
-			function (reason) {
-				alert('Deu erro, segue: ', reason)
-			}
-		)
-	})
+	app.ready()
+
+	/*
+	var container = $('.container').first()
+	var content = $('#content')
+	if($(container).height() < $(content).height()) {
+		$(container).css('position', 'absolute')
+		$(container).css('top', '50%')
+		$(container).css('margin-top', ((($(container).height() / 2) * -1) + 'px'))
+	}
+       */
 })

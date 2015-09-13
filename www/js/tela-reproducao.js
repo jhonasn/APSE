@@ -92,10 +92,6 @@ $(document).ready(function() {
 		})
 	})
 
-	$('#btn-phone').click(function(e) {
-		window.location.href = 'tel:192'
-	})
-
 	$('#instrucoes').find('.list-group-item').click(function(e) {
 		e.preventDefault()
 		player.instrucaoAtual = parseInt($(this).attr('id'))
@@ -106,11 +102,18 @@ $(document).ready(function() {
 		})
 	})
 
-	var trocaInstrucaoUI = function (id) {
+	var trocaInstrucaoUI = function (id, scrollWindow) {
 		$('#instrucoes').find('.list-group-item').removeClass('active')
 		$('#instrucoes').find('.list-group-item#{id}'.replace('{id}', id))
-		.addClass('active')
+					.addClass('active')
+		if(scrollWindow !== false) {
+			$('html,body').animate({ scrollTop: $('#instrucoes').find('.list-group-item.active').offset().top }, 'slow')
+		}
 	}
 
-	trocaInstrucaoUI(player.instrucaoAtual)
+	$('#btn-phone').click(function(e) {
+		window.location.href = 'tel:192'
+	})
+
+	trocaInstrucaoUI(player.instrucaoAtual, false)
 })

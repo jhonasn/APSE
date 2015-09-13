@@ -1,25 +1,27 @@
-<script type="text/javascript" src="js/classes/tela-escolha.js"></script>
+<link rel="stylesheet" href="css/tela-escolha.css">
+<script type="text/javascript" src="js/tela-escolha.js"></script>
 
 <div class="container col-xs-12">
-	<br />
 	<div id="detalhes-tela" class="row">
-		<div class="col-xs-3">
-			<object id="{icone}" data="img/{icone}.svg"></object>
+		<div class="col-xs-3 vertical-center">
+			<img id="{icone}" src="img/{icone}.svg"/>
 		</div>
-
-		<div class="col-xs-8">
-			<h1 class="titulo">{titulo}</h1>
+		<div class="col-xs-5 vertical-center">
+				<h2 class="titulo"><strong>{titulo}</strong></h2>
 		</div>
 	</div>
+	<img id="btn-home" src="img/btn-home.svg" class="col-xs-3">
+	<br>
+	<br>
 	<div id="item-template">
-		<br />
+		<br>
 		<div class="row">
-			<div class="col-xs-3">
-				<object id="{icone}" data="img/{icone}.svg"></object>
+			<div class="col-xs-3 vertical-center">
+				<img id="{icone}" src="img/{icone}.svg" class="escolha"/>
 			</div>
-			<div class="col-xs-8 subtitulo">
-				<h2>{titulo}</h2>
-				<h3>{detalhes}</h3>
+			<div class="col-xs-8 subtitulo vertical-center">
+				<h2 class="escolha">{titulo}</h2>
+				<p class="escolha">{descricao}</p>
 			</div>
 		</div>
 	</div>       
