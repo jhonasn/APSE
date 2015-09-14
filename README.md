@@ -20,6 +20,10 @@ cd br.cnec.faculdadecampolargo.salva-vidas-op2
 cordova platform add [wp8/ios/android] //escolher uma delas
 cordova plugin add com.wordsbaking.cordova.tts
 ``
+instalar plugin do splashscreen
+``
+cordova plugin add org.apache.cordova.splashscreen
+``
 
 Note que para instalar o plugin primeiro precisamos instalar a plataforma.
 
