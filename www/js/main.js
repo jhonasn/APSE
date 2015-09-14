@@ -4,9 +4,13 @@ var app = {
 		if(btnHome.length) {
 			$(btnHome).off('click')
 			$(btnHome).click(function(e) {
-				window.location.href = ''
+				$('#content').fadeOut(function() { 
+					$('#content').hide() 
+					window.location.href = ''
+				})
 			})
 		}
+		app.show()
 	},
 	dadosTelas: null,
 	dadosTela: null,
@@ -28,6 +32,7 @@ var app = {
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
 			$('#content').fadeOut()
+			$('#content').hide()
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
 			.replace(/\{icone\}/g, dadosTela.icone)
 
@@ -46,7 +51,6 @@ var app = {
 			})
 
 			$('#content').html(content)
-			$('#content').fadeIn()
 		})
 		.error(function(err) {
 			alert(mensagemErro)
@@ -56,14 +60,15 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
-			$('#content').fadeOut()
+			$('#content').fadeOut('slow')
+			$('#content').hide()
 			content = $(content)
 
 			var principal = $(content).children().filter('#detalhes-tela')
 			strPrincipal = $(principal).get(0).outerHTML
 			$(principal).remove()
 			strPrincipal = strPrincipal.replace(/\{titulo\}/g, dadosTela.titulo)
-				  .replace(/\{icone\}/g, dadosTela.icone)
+			.replace(/\{icone\}/g, dadosTela.icone)
 
 			$(content).prepend(strPrincipal)
 
@@ -73,31 +78,46 @@ var app = {
 
 			dadosTela.escolhas.forEach(function(e, i) {
 				var strTemplate = template.replace(/\{titulo\}/g, e.titulo)
-								.replace(/\{icone\}/g, e.icone)
-								.replace(/\{descricao\}/g, e.descricao)
+				.replace(/\{icone\}/g, e.icone)
+				.replace(/\{descricao\}/g, e.descricao)
 
 				if(!e.descricao) {
 					strTemplate = $(strTemplate)
 					$(strTemplate).children().filter('.subtitulo')
-							.children().filter('h3').remove()
+					.children().filter('h3').remove()
 				}
 
 				$(content).append(strTemplate)
 			})
 
 			$('#content').html(content)
-			$('#content').fadeIn()
 		})
 		.error(function(err) {
 			alert(mensagemErro)
+		})
+	},
+	correcoesOrientacaoTela: function () {
+		$('#content').css('min-height', window.innerHeight + 'px')
+		var mainBtns = $('#main-btns')
+
+		if($(mainBtns).height() >= window.innerHeight) {
+			$(mainBtns).height(window.innerHeight - (window.innerHeight * 0.2))
+		} else {
+			$(mainBtns).css('height', 'auto')
+		}
+
+		$(mainBtns).css('margin-top', (($(mainBtns).height() / 2) * -1) + 'px')
+	},
+	show: function() {
+		$('#content').fadeIn('slow', function() {
+			$('#content').show()
+			app.correcoesOrientacaoTela()
 		})
 	}
 }
 
 
-$(document).ready(function() {
-	app.ready()
-
+var mainReady = function() {
 	var svgDoc = $('#main-btns').get(0)
 	var mensagemErro = 'Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.'
 
@@ -105,6 +125,8 @@ $(document).ready(function() {
 		svgDoc = svgDoc.contentDocument
 
 		$(svgDoc).find('g[id].clicable').click(function() {
+			$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
+			$(this).fadeTo('fast', 0.6)
 			var selecionado = $(this).attr('id')
 
 			var telaContent = app.dadosTelas.telas.filter(function(t) {
@@ -134,40 +156,18 @@ $(document).ready(function() {
 	}
 
 	$('#scroll-top').click(function(e) {
-		//window.scroll(0, 0)
 		$('html,body').animate({ scrollTop: 0 }, 'slow')
 	})
 
-	var correcoesOrientacaoTela = function () {
-		$('#content').css('min-height', window.innerHeight + 'px')
-		var mainBtns = $('#main-btns')
-
-		if($(mainBtns).height() >= window.innerHeight) {
-			$(mainBtns).height(window.innerHeight - (window.innerHeight * 0.2))
-		} else {
-			$(mainBtns).css('height', 'auto')
-		}
-
-		$(mainBtns).css('margin-top', (($(mainBtns).height() / 2) * -1) + 'px')
-	}
-
-	/*
-	//isso n funciona certo, tem um delay estranho
-	window.addEventListener('orientationchange', function(){
-		var currentOrientation = ""
-
-		if (window.orientation === 90 || window.orientation === -90) {
-			currentOrientation = "landscape"
-		} else {
-			currentOrientation = "portrait"
-		}
+	window.onresize = app.correcoesOrientacaoTela
+	$(document).on('deviceready', app.correcoesOrientacaoTela)
+	$(document).on('deviceready', function() {
+		window.navigator.splashscreen.hide()
 	})
-       */
 
-	window.onresize = correcoesOrientacaoTela
-	$(document).on('deviceready', correcoesOrientacaoTela)
-	$(document).on('deviceready', window.navigator.splashscreen.hide)
-
-	correcoesOrientacaoTela()
+	app.correcoesOrientacaoTela()
 	app.getDadosTelas()
-})
+	app.ready()
+}
+
+$(document).ready(mainReady)

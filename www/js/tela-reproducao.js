@@ -68,6 +68,9 @@ $(document).ready(function() {
 		svgDoc = svgDoc.contentDocument
 
 		$(svgDoc).find('g[id].clicable').click(function() {
+			$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
+			$(this).fadeTo('fast', 0.6)
+
 			var selecionado = $(this).attr('id')
 
 			switch(selecionado) {
