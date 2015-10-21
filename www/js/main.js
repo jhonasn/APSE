@@ -1,4 +1,5 @@
 var app = {
+	tela: 'home',
 	ready: function() {
 		var btnHome = $('#btn-home')
 		if(btnHome.length) {
@@ -31,6 +32,7 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
+			app.tela = 'reproducao'
 			$('#content').fadeOut()
 			$('#content').hide()
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
@@ -57,6 +59,7 @@ var app = {
 		})
 	},
 	abrirTelaEscolha: function(dadosTela) {
+		app.tela = 'escolha'
 		app.dadosTela = dadosTela
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
@@ -124,6 +127,22 @@ var mainReady = function() {
 	$(svgDoc).on('load', function() {
 		svgDoc = svgDoc.contentDocument
 
+		$(svgDoc).find('g[id].clicable').on('touchstart', function() {
+			var selecionado = $(this).attr('id')
+			var telaContent = app.dadosTelas.telas.filter(function(t) {
+				return t.icone === selecionado
+			})[0]
+
+			var elNomeElSelecionado = $('#nome-btn-selecionado')
+			$(elNomeElSelecionado).text(telaContent.titulo)
+			$(elNomeElSelecionado).show()
+		})
+
+		$(svgDoc).find('g[id].clicable').on('touchend', function() {
+			var elNomeElSelecionado = $('#nome-btn-selecionado')
+			$(elNomeElSelecionado).hide()
+		})
+
 		$(svgDoc).find('g[id].clicable').click(function() {
 			$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
 			$(this).fadeTo('fast', 0.6)
@@ -163,6 +182,17 @@ var mainReady = function() {
 	$(document).on('deviceready', app.correcoesOrientacaoTela)
 	$(document).on('deviceready', function() {
 		window.navigator.splashscreen.hide()
+	})
+
+	$(document).on('backbutton', function() {
+		if(app.tela !== 'home') {
+			$('#content').fadeOut(function() { 
+				$('#content').hide() 
+				window.location.href = ''
+			})
+		} else {
+			navigator.app.exitApp()
+		}
 	})
 
 	app.correcoesOrientacaoTela()

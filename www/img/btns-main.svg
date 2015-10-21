@@ -15,6 +15,15 @@
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="btns-main.svg">
+<style>
+.clicable, g {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select:none;
+}
+</style>
   <defs
      id="defs62094">
     <linearGradient
