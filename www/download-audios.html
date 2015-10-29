@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Say it to me!</title>
+	<title>Download dos audios do APSE</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
@@ -12,13 +12,13 @@
 	<script id="instrucao-template" type="text-template">
 		<tr>
 			<td class="texto"></td>
-			<td class="id"></td>
+			<td class="id"><a href="javascript:void(0)" title="Clique para copiar para a área de transferência"></a></td>
 			<td class="url"><button>download</button></td>
 		</tr>
 	</script>
 
 	<table class="table table-responsive table-bordered col-md-12">
-		<caption><h1>Download dos audios do apse</h1></caption>
+		<caption><h1>Download dos audios do APSE</h1></caption>
 		<tr>
 			<th>Texto</th>
 			<th>Nome Salvar</th>
@@ -31,24 +31,6 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 
 	<script>
-		/*var audioTagSupport = !!(document.createElement('audio').canPlayType);
-		$('#say-form').submit(function() {
-			if (!audioTagSupport) return false;
-			var text = $.trim($('#say-text').val());
-			if (text == '') return false;
-
-			var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q=' + encodeURIComponent(text);
-			var audio = document.createElement('audio');
-			audio.setAttribute('src', url);
-			audio.load();
-			audio.play();
-			var elUrl = document.getElementById('url-open');
-			elUrl.href = url;
-			var urlSpan = elUrl.children[0];
-			urlSpan.innerHTML = url;
-
-			return false;
-		});*/
 		$(document).ready(function(){
 			var templateTitleTr = '<tr><td colspan="3" class="text-center">{content}</td></tr>'
 			var templateIntrucao = $('#instrucao-template').text()
@@ -68,7 +50,7 @@
 					var instrucaoId = tela.id.concat('_')
 
 					var loopInstrucoes = function(instrucao, i) {
-						var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q=' + encodeURIComponent(instrucao)
+						var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q='.concat(instrucao)
 
 						var instrucaoTr = $(templateIntrucao)
 						$(instrucaoTr).find('.texto').text(instrucao)
@@ -76,10 +58,17 @@
 						var btn = $(instrucaoTr).find('.url').find('button')
 						$(btn).attr('title', url);
 						$(btn).click(function(e) {
+							var textoCopiar = $(this).parent().siblings('.id').text().trim()
+							window.prompt("Copie o nome para salvar (Ctrl+C, Enter)", textoCopiar)
 							window.open(url, '_blank')
 						})
 
-						$(instrucaoTr).find('.id').text(instrucaoId.concat(i))
+						var idBtn = $(instrucaoTr).find('.id').find('a');
+						$(idBtn).text(instrucaoId.concat(i))
+						$(idBtn).click(function() {
+							var textoCopiar = $(this).text().trim()
+							window.prompt("Copie o nome para salvar (Ctrl+C, Enter)", textoCopiar)
+						})
 						$(table).append(instrucaoTr)
 					}
 
