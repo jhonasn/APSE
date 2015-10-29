@@ -1,0 +1,29 @@
+application: apse-facecla
+version: 1
+runtime: python27
+threadsafe: true
+api_version: 1
+
+handlers:
+- url: /
+  static_files: www/index.html
+  upload: www/index\.html
+
+- url: /css
+  static_dir: www/css
+- url: /data
+  static_dir: www/data
+- url: /fonts
+  static_dir: www/fonts
+- url: /img
+  static_dir: www/img
+- url: /js
+  static_dir: www/js
+- url: /templates
+  static_dir: www/templates
+
+libraries:
+- name: pycrypto
+  version: latest
+- name: endpoints
+  version: 1.0

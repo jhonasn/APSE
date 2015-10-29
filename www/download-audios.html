@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Say it to me!</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+</head>
+
+<body>
+
+	<script id="instrucao-template" type="text-template">
+		<tr>
+			<td class="texto"></td>
+			<td class="id"></td>
+			<td class="url"><button>download</button></td>
+		</tr>
+	</script>
+
+	<table class="table table-responsive table-bordered col-md-12">
+		<caption><h1>Download dos audios do apse</h1></caption>
+		<tr>
+			<th>Texto</th>
+			<th>Nome Salvar</th>
+			<th>Download</th>
+		</tr>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+	<script>
+		/*var audioTagSupport = !!(document.createElement('audio').canPlayType);
+		$('#say-form').submit(function() {
+			if (!audioTagSupport) return false;
+			var text = $.trim($('#say-text').val());
+			if (text == '') return false;
+
+			var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q=' + encodeURIComponent(text);
+			var audio = document.createElement('audio');
+			audio.setAttribute('src', url);
+			audio.load();
+			audio.play();
+			var elUrl = document.getElementById('url-open');
+			elUrl.href = url;
+			var urlSpan = elUrl.children[0];
+			urlSpan.innerHTML = url;
+
+			return false;
+		});*/
+		$(document).ready(function(){
+			var templateTitleTr = '<tr><td colspan="3" class="text-center">{content}</td></tr>'
+			var templateIntrucao = $('#instrucao-template').text()
+
+			$.get('data/conteudo-telas.json')
+			.success(function(data) {
+				var dadosTelas = null
+				if(typeof data === 'string') {
+					dadosTelas = JSON.parse(data)
+				} else {
+					dadosTelas = data
+				}
+
+				var table = $('table').find('tbody').first()
+
+				dadosTelas.telas.forEach(function(tela) {
+					var instrucaoId = tela.id.concat('_')
+
+					var loopInstrucoes = function(instrucao, i) {
+						var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q=' + encodeURIComponent(instrucao)
+
+						var instrucaoTr = $(templateIntrucao)
+						$(instrucaoTr).find('.texto').text(instrucao)
+
+						var btn = $(instrucaoTr).find('.url').find('button')
+						$(btn).attr('title', url);
+						$(btn).click(function(e) {
+							window.open(url, '_blank')
+						})
+
+						$(instrucaoTr).find('.id').text(instrucaoId.concat(i))
+						$(table).append(instrucaoTr)
+					}
+
+					if(!tela._comment) {
+						$(table).append('<tr></tr>')
+						$(table).append(templateTitleTr.replace('{content}', tela.titulo))
+					}
+
+					if(tela._comment) {
+						//não faz nada, json/tela de template
+					} else if(tela.escolhas) {
+						tela.escolhas.forEach(function(escolha) {
+							instrucaoId = instrucaoId.concat(escolha.id, '_')
+
+							$(table).append('<tr></tr>')
+
+							var titulo = tela.titulo.concat(' ', escolha.titulo)
+							$(table).append(templateTitleTr.replace('{content}', titulo))
+
+							if(escolha.instrucoes) {
+								escolha.instrucoes.forEach(loopInstrucoes)
+							} else {
+								tela.titulo.concat(' ', escolha.titulo)
+								$(table).append(templateTitleTr.replace('{content}', 'Erro: Não encontrado instruções da tela: '.concat(titulo)))
+							}
+						})
+					} else if (tela.instrucoes) {
+						tela.instrucoes.forEach(loopInstrucoes)
+					} else {
+						$(table).append(templateTitleTr.replace('{content}', 'Erro: Não encontrado instruções da tela: '.concat(tela.titulo)))
+					}
+
+				})
+
+
+			})
+			.error(function(err) {
+				$('table').find('tbody').html(templateTitleTr.replace('{content}', 'Erro ao obter informações das falas do aplicativo.'))
+			})
+		})
+	</script>
+</body>
+
+</html>
