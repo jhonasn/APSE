@@ -13,7 +13,8 @@
 		<tr>
 			<td class="texto"></td>
 			<td class="id"><a href="javascript:void(0)" title="Clique para copiar para a área de transferência"></a></td>
-			<td class="url"><button>download</button></td>
+			<td class="open"><button>open</button></td>
+			<td class="download"><a href="javascript:void(0)" download="">download</a></td>
 		</tr>
 	</script>
 
@@ -22,6 +23,7 @@
 		<tr>
 			<th>Texto</th>
 			<th>Nome Salvar</th>
+			<th>Open</th>
 			<th>Download</th>
 		</tr>
 		<tbody>
@@ -50,18 +52,23 @@
 					var instrucaoId = tela.id.concat('_')
 
 					var loopInstrucoes = function(instrucao, i) {
-						var url = 'http://translate.google.com/translate_tts?tl=pt-BR&q='.concat(instrucao)
+						var url = 'http://localhost:8100/translate//translate_tts?tl=pt-BR&q='.concat(encodeURIComponent(instrucao))
 
 						var instrucaoTr = $(templateIntrucao)
 						$(instrucaoTr).find('.texto').text(instrucao)
 
-						var btn = $(instrucaoTr).find('.url').find('button')
+						var btn = $(instrucaoTr).find('.open').find('button')
 						$(btn).attr('title', url);
 						$(btn).click(function(e) {
 							var textoCopiar = $(this).parent().siblings('.id').text().trim()
 							window.prompt("Copie o nome para salvar (Ctrl+C, Enter)", textoCopiar)
 							window.open(url, '_blank')
 						})
+
+						var audioBase64 = 'mentira'
+						var a = $(instrucaoTr).find('.download').find('a')
+						$(a).attr('download', instrucaoId.concat(i))
+						$(a).click(downloadAudio)
 
 						var idBtn = $(instrucaoTr).find('.id').find('a');
 						$(idBtn).text(instrucaoId.concat(i))
@@ -109,6 +116,54 @@
 				$('table').find('tbody').html(templateTitleTr.replace('{content}', 'Erro ao obter informações das falas do aplicativo.'))
 			})
 		})
+
+function downloadAudio (e) {
+	var self = this
+
+	var partesMensagem = [ $(this).closest('tr').find('td.texto').text().trim() ]
+
+	//separa strings com comprimento menor que 100 caracteres
+	var pontuacao = '.,:; '
+	while (partesMensagem[partesMensagem.length - 1].length > 100) {
+		var mensagem = partesMensagem[partesMensagem.length - 1]
+		mensagem = mensagem.substring(0, 100)
+		for(var i = 0; i < pontuacao.length; i++) {
+			var idx = mensagem.lastIndexOf(pontuacao[i])
+				if(idx > -1) {
+					var fimMensagem = mensagem.substring(idx + 1)
+					mensagem = mensagem.substring(0, idx + 1)
+					partesMensagem[partesMensagem.length - 1] = mensagem
+					partesMensagem.push(fimMensagem)
+					break;
+				}
+		}
+	}
+
+	var mensagemB64 = ''
+	partesMensagem = partesMensagem.map(function (mensagem) {
+			return function (cb) {
+				$.get('/translate/translate_tts?tl=pt-BR&q='.concat(mensagem))
+				.success(function(data) {
+					mensagemB64 += btoa(data)
+					cb()
+				})
+				.error(function(err) {
+					alert('erro ao fazer o download do audio')
+				})			}
+	})
+
+	var i = 0
+	var next = function() {
+		if(i < partesMensagem.length) {
+			partesMensagem[i](next)
+			i++
+		} else {
+			//terminou
+			$(self).attr('href', 'data:audio/mp3;base64,'.concat(btoa(mensagemB64)))
+		}
+	}
+	next()
+}
 	</script>
 </body>
 
