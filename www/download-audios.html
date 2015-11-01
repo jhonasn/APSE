@@ -14,7 +14,7 @@
 			<td class="texto"></td>
 			<td class="id"><a href="javascript:void(0)" title="Clique para copiar para a área de transferência"></a></td>
 			<td class="open"><button>open</button></td>
-			<td class="download"><a href="javascript:void(0)" download="">download</a></td>
+			<td class="download"></td>
 		</tr>
 	</script>
 
@@ -52,7 +52,8 @@
 					var instrucaoId = tela.id.concat('_')
 
 					var loopInstrucoes = function(instrucao, i) {
-						var url = 'http://localhost:8100/translate//translate_tts?tl=pt-BR&q='.concat(encodeURIComponent(instrucao))
+						var baseUrlGTranslate = 'http://translate.google.com/translate_tts?tl=pt-BR&q='
+						var url = baseUrlGTranslate.concat(encodeURIComponent(instrucao))
 
 						var instrucaoTr = $(templateIntrucao)
 						$(instrucaoTr).find('.texto').text(instrucao)
@@ -65,10 +66,15 @@
 							window.open(url, '_blank')
 						})
 
-						var audioBase64 = 'mentira'
-						var a = $(instrucaoTr).find('.download').find('a')
-						$(a).attr('download', instrucaoId.concat(i))
-						$(a).click(downloadAudio)
+						var tdDownload = $(instrucaoTr).find('.download')
+						//separa strings com comprimento menor que 100 caracteres
+						var partesMensagem = separaTextoParaGTranslate(instrucao)
+						partesMensagem.forEach(function(mensagem, j) {
+							var a = $('<a class="btn btn-default">download parte {i}</a>'.replace('{i}', j))
+							$(a).attr('download', instrucaoId.concat(i, '_', j))
+							$(a).attr('href', baseUrlGTranslate.concat(encodeURIComponent(mensagem)))
+							$(tdDownload).append(a)
+						})
 
 						var idBtn = $(instrucaoTr).find('.id').find('a');
 						$(idBtn).text(instrucaoId.concat(i))
@@ -117,52 +123,28 @@
 			})
 		})
 
-function downloadAudio (e) {
-	var self = this
-
-	var partesMensagem = [ $(this).closest('tr').find('td.texto').text().trim() ]
-
-	//separa strings com comprimento menor que 100 caracteres
-	var pontuacao = '.,:; '
+function separaTextoParaGTranslate(texto) {
+	partesMensagem = [ texto ]
+	var pontuacao = '.:;, '
 	while (partesMensagem[partesMensagem.length - 1].length > 100) {
-		var mensagem = partesMensagem[partesMensagem.length - 1]
-		mensagem = mensagem.substring(0, 100)
+		var mensagem = partesMensagem[partesMensagem.length - 1].substring(0, 100)
+		var fimMensagem = partesMensagem[partesMensagem.length - 1].substring(100)
 		for(var i = 0; i < pontuacao.length; i++) {
 			var idx = mensagem.lastIndexOf(pontuacao[i])
-				if(idx > -1) {
-					var fimMensagem = mensagem.substring(idx + 1)
-					mensagem = mensagem.substring(0, idx + 1)
-					partesMensagem[partesMensagem.length - 1] = mensagem
-					partesMensagem.push(fimMensagem)
-					break;
-				}
+			if(idx > -1 && idx <= 100) {
+				var restoMensagem = mensagem.substring(idx + 1)
+				mensagem = mensagem.substring(0, idx + 1)
+				partesMensagem[partesMensagem.length - 1] = mensagem
+				partesMensagem.push(restoMensagem.concat(fimMensagem))
+				break;
+			}
+		}
+		if(mensagem.length > 100) {
+			partesMensagem[partesMensagem.length - 1] = mensagem
+			partesMensagem.push(fimMensagem)
 		}
 	}
-
-	var mensagemB64 = ''
-	partesMensagem = partesMensagem.map(function (mensagem) {
-			return function (cb) {
-				$.get('/translate/translate_tts?tl=pt-BR&q='.concat(mensagem))
-				.success(function(data) {
-					mensagemB64 += btoa(data)
-					cb()
-				})
-				.error(function(err) {
-					alert('erro ao fazer o download do audio')
-				})			}
-	})
-
-	var i = 0
-	var next = function() {
-		if(i < partesMensagem.length) {
-			partesMensagem[i](next)
-			i++
-		} else {
-			//terminou
-			$(self).attr('href', 'data:audio/mp3;base64,'.concat(btoa(mensagemB64)))
-		}
-	}
-	next()
+	return partesMensagem
 }
 	</script>
 </body>
