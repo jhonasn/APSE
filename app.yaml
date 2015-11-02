@@ -21,6 +21,8 @@ handlers:
   static_dir: www/js
 - url: /templates
   static_dir: www/templates
+- url: /media
+  static_dir: www/media
 
 libraries:
 - name: pycrypto
