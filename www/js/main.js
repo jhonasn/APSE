@@ -1,20 +1,21 @@
+var mensagemErro = 'Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.'
 var app = {
-	tela: 'home',
+	tela: null,
+	dadosTelas: null,
+	dadosTela: null,
 	ready: function() {
 		var btnHome = $('#btn-home')
 		if(btnHome.length) {
 			$(btnHome).off('click')
 			$(btnHome).click(function(e) {
-				$('#content').fadeOut(function() { 
-					$('#content').hide() 
-					window.location.href = ''
+				$('#content').fadeOut(function() {
+					$('#content').hide()
+					app.abrirTelaHome()
 				})
 			})
 		}
 		app.show()
 	},
-	dadosTelas: null,
-	dadosTela: null,
 	getDadosTelas: function() {
 		$.get('data/conteudo-telas.json')
 		.success(function(data) {
@@ -28,11 +29,68 @@ var app = {
 			alert(mensagemErro)
 		})
 	},
+	abrirTelaHome: function() {
+		app.tela = 'home'
+		var svgDoc = null
+		var svgDocOnLoad = null
+		$.get('templates/tela-home.html')
+		.success(function(content) {
+			$('#content').html(content)
+			svgDoc = $('#main-btns').get(0)
+			$(svgDoc).on('load', svgDocOnLoad)
+		})
+		.error(function(err) {
+			alert(mensagemErro)
+		})
+
+		svgDocOnLoad = function() {
+			svgDoc = svgDoc.contentDocument
+
+			$(svgDoc).find('g[id].clicable').on('touchstart', function() {
+				var selecionado = $(this).attr('id')
+				var telaContent = app.dadosTelas.telas.filter(function(t) {
+					return t.icone === selecionado
+				})[0]
+
+				var elNomeElSelecionado = $('#nome-btn-selecionado')
+				$(elNomeElSelecionado).text(telaContent.titulo)
+				$(elNomeElSelecionado).show()
+			})
+
+			$(svgDoc).find('g[id].clicable').on('touchend', function() {
+				var elNomeElSelecionado = $('#nome-btn-selecionado')
+				$(elNomeElSelecionado).hide()
+			})
+
+			$(svgDoc).find('g[id].clicable').click(function() {
+				$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
+				$(this).fadeTo('fast', 0.6)
+				var selecionado = $(this).attr('id')
+
+				var telaContent = app.dadosTelas.telas.filter(function(t) {
+					return t.icone === selecionado
+				})
+
+				if(telaContent.length > 0) {
+					telaContent = telaContent[0]
+				} else {
+					return
+				}
+
+				if(telaContent.hasOwnProperty('escolhas') && Array.isArray(telaContent.escolhas)) {
+					app.abrirTelaEscolha(telaContent)
+				} else {
+					app.abrirTelaReproducao(telaContent)
+				}
+			})
+		}
+	},
 	abrirTelaReproducao: function(dadosTela) {
+		app.tela = 'reproducao'
+		dadosTela.escolhaId = dadosTela.escolhaId || ''
 		app.dadosTela = dadosTela
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
-			app.tela = 'reproducao'
 			$('#content').fadeOut()
 			$('#content').hide()
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
@@ -121,50 +179,9 @@ var app = {
 
 
 var mainReady = function() {
-	var svgDoc = $('#main-btns').get(0)
-	var mensagemErro = 'Houve um erro ao acessar os dados base do aplicativo. Tente reiniciar o aplicativo.'
-
-	$(svgDoc).on('load', function() {
-		svgDoc = svgDoc.contentDocument
-
-		$(svgDoc).find('g[id].clicable').on('touchstart', function() {
-			var selecionado = $(this).attr('id')
-			var telaContent = app.dadosTelas.telas.filter(function(t) {
-				return t.icone === selecionado
-			})[0]
-
-			var elNomeElSelecionado = $('#nome-btn-selecionado')
-			$(elNomeElSelecionado).text(telaContent.titulo)
-			$(elNomeElSelecionado).show()
-		})
-
-		$(svgDoc).find('g[id].clicable').on('touchend', function() {
-			var elNomeElSelecionado = $('#nome-btn-selecionado')
-			$(elNomeElSelecionado).hide()
-		})
-
-		$(svgDoc).find('g[id].clicable').click(function() {
-			$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
-			$(this).fadeTo('fast', 0.6)
-			var selecionado = $(this).attr('id')
-
-			var telaContent = app.dadosTelas.telas.filter(function(t) {
-				return t.icone === selecionado
-			})
-
-			if(telaContent.length > 0) {
-				telaContent = telaContent[0]
-			} else {
-				return
-			}
-
-			if(telaContent.hasOwnProperty('escolhas') && Array.isArray(telaContent.escolhas)) {
-				app.abrirTelaEscolha(telaContent)
-			} else {
-				app.abrirTelaReproducao(telaContent)
-			}
-		})
-	})
+	if(!app.tela) {
+		app.abrirTelaHome()
+	}
 
 	window.onscroll = function(e) {
 		if(window.scrollY > (window.screen.height * 0.3)) {
@@ -186,9 +203,9 @@ var mainReady = function() {
 
 	$(document).on('backbutton', function() {
 		if(app.tela !== 'home') {
-			$('#content').fadeOut(function() { 
-				$('#content').hide() 
-				window.location.href = ''
+			$('#content').fadeOut(function() {
+				$('#content').hide()
+				app.abrirTelaHome()
 			})
 		} else {
 			navigator.app.exitApp()

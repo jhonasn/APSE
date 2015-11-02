@@ -14,6 +14,7 @@
 		if(telaContent.length > 0) {
 			telaContent = telaContent[0]
 			telaContent.icone = app.dadosTela.icone
+			telaContent.escolhaId = app.dadosTela.id
 		} else {
 			return
 		}

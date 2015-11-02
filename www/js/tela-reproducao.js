@@ -3,6 +3,7 @@ $(document).ready(function() {
 	app.ready()
 	var svgDoc = $('#btns-player').get(0)
 	var player = {
+		audio: null,
 		instrucaoAtual: 0,
 		avancar: true,
 		play: function() {
@@ -37,17 +38,52 @@ $(document).ready(function() {
 			}
 		},
 		pararAudio: function (cb) {
-			TTS.speak('', cb, cb)
+			// TTS.speak('', cb, cb)
+			player.audio.pause()
+			player.audio.currentTime = 0
+			player.audio.src = ''
+			cb ? cb() : void(0)
+			// audioEl.get(0).load()
 		},
 		reproduzirAudio: function (id, cb) {
-			TTS.speak({
-				text: app.dadosTela.instrucoes[id],
-				locale: 'pt-BR',
-				//rate: 0.75
-			}, function() {
-				cb(null)
-			}, function(err) {
-				cb('Error: ' + err)
+			// TTS.speak({
+			// 	text: app.dadosTela.instrucoes[id],
+			// 	locale: 'pt-BR',
+			// 	//rate: 0.75
+			// }, function() {
+			// 	cb(null)
+			// }, function(err) {
+			// 	cb('Error: ' + err)
+			// })
+			player.audio = new Audio()
+			player.audio.autoplay = true
+			player.audio.preload = 'auto'
+
+			var url = 'media/{e}{id}_{i}.mp3'
+			url = url.replace('{e}', app.dadosTela.escolhaId ? app.dadosTela.escolhaId.concat('_') : '')
+			.replace('{id}', app.dadosTela.id)
+			.replace('{i}', id)
+
+			player.audio.src = url
+			/*
+				audio.networkState
+				0 = NETWORK_EMPTY - audio/video has not yet been initialized
+				1 = NETWORK_IDLE - audio/video is active and has selected a resource, but is not using the network
+				2 = NETWORK_LOADING - browser is downloading data
+				3 = NETWORK_NO_SOURCE - no audio/video source found
+			*/
+			// if(player.audio.networkState == 0) {
+				// player.audio.load()
+			// }
+			// $(player.audio).on('loadeddata', function() {
+			// 	player.audio.play()
+			// })
+			$(player.audio).on('ended', function() {
+				cb ? cb() : void(0)
+			})
+			$(player.audio).on('error, stalled, abort, suspend', function(err) {
+				console.log(err)
+				console.log(arguments)
 			})
 		},
 		proximoAudio: function(err) {
