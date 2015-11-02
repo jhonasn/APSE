@@ -8,7 +8,7 @@ var app = {
 		if(btnHome.length) {
 			$(btnHome).off('click')
 			$(btnHome).click(function(e) {
-				$('#content').fadeOut(function() {
+				$('#content').fadeOut('fast', function() {
 					$('#content').hide()
 					app.abrirTelaHome()
 				})
@@ -38,6 +38,7 @@ var app = {
 			$('#content').html(content)
 			svgDoc = $('#main-btns').get(0)
 			$(svgDoc).on('load', svgDocOnLoad)
+			$('#content').ready(mainReady)
 		})
 		.error(function(err) {
 			alert(mensagemErro)
@@ -91,7 +92,7 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
-			$('#content').fadeOut()
+			$('#content').fadeOut('fast')
 			$('#content').hide()
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
 			.replace(/\{icone\}/g, dadosTela.icone)
@@ -121,7 +122,7 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
-			$('#content').fadeOut('slow')
+			$('#content').fadeOut('fast')
 			$('#content').hide()
 			content = $(content)
 
@@ -170,7 +171,7 @@ var app = {
 		$(mainBtns).css('margin-top', (($(mainBtns).height() / 2) * -1) + 'px')
 	},
 	show: function() {
-		$('#content').fadeIn('slow', function() {
+		$('#content').fadeIn('fast', function() {
 			$('#content').show()
 			app.correcoesOrientacaoTela()
 		})
@@ -185,9 +186,9 @@ var mainReady = function() {
 
 	window.onscroll = function(e) {
 		if(window.scrollY > (window.screen.height * 0.3)) {
-			$('#scroll-top').fadeIn()
+			$('#scroll-top').fadeIn('fast')
 		} else {
-			$('#scroll-top').fadeOut()
+			$('#scroll-top').fadeOut('fast')
 		}
 	}
 
@@ -203,7 +204,7 @@ var mainReady = function() {
 
 	$(document).on('backbutton', function() {
 		if(app.tela !== 'home') {
-			$('#content').fadeOut(function() {
+			$('#content').fadeOut('fast', function() {
 				$('#content').hide()
 				app.abrirTelaHome()
 			})
