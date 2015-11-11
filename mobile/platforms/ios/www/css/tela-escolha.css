@@ -1,0 +1,20 @@
+﻿#detalhes-tela .vertical-center {
+	margin-top: 0.5em;
+}
+
+#btn-home {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 5;
+}
+
+.titulo
+{
+    color: white;
+}
+
+.subtitulo 
+{
+     color: black;
+}

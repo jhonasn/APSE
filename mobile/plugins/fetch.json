@@ -1,0 +1,35 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.wordsbaking.cordova.tts": {
+        "source": {
+            "type": "registry",
+            "id": "com.wordsbaking.cordova.tts"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.mediamatrixdoo.keepscreenon": {
+        "source": {
+            "type": "git",
+            "url": "git://github.com/zoxxx/PhoneGap-KeepScreenOn-plugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

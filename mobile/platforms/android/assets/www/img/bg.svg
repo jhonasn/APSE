@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   viewBox="0 0 282.67374 464.33875"
+   preserveAspectRatio="none"
+   id="bg">
+  <defs
+     id="defs4">
+    <clipPath
+       id="clipPath37610">
+      <path
+         d="m 56.157,148.523 226.139,0 0,371.471 -226.139,0 0,-371.471 z"
+         id="path37612" />
+    </clipPath>
+    <radialGradient
+       cx="0"
+       cy="0"
+       r="1"
+       fx="0"
+       fy="0"
+       id="radialGradient37618"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(99.737862,149.409,267.06692,-178.28033,173.42725,344.93848)"
+       spreadMethod="pad">
+      <stop
+         id="stop37620"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop37622"
+         style="stop-color:#c1343e;stop-opacity:1"
+         offset="1" />
+    </radialGradient>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-230.0917,-397.3357)"
+     id="layer1">
+    <g
+       transform="matrix(1.25,0,0,-1.25,159.89545,1047.3282)"
+       id="g10">
+      <g
+         id="g37606">
+        <g
+           clip-path="url(#clipPath37610)"
+           id="g37608">
+          <g
+             id="g37614">
+            <g
+               id="g37616">
+              <path
+                 d="m 56.157,148.523 226.139,0 0,371.471 -226.139,0 0,-371.471 z"
+                 id="path37624"
+                 style="fill:url(#radialGradient37618);stroke:none" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

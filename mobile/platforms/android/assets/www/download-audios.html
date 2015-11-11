@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Download dos audios do APSE</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+</head>
+
+<body>
+
+	<script id="instrucao-template" type="text-template">
+		<tr>
+			<td class="texto"></td>
+			<td class="id"><a href="javascript:void(0)" title="Clique para copiar para a área de transferência"></a></td>
+			<td class="open"><button>open</button></td>
+			<td class="download"></td>
+		</tr>
+	</script>
+
+	<table class="table table-responsive table-bordered col-md-12">
+		<caption><h1>Download dos audios do APSE</h1></caption>
+		<tr>
+			<th>Texto</th>
+			<th>Nome Salvar</th>
+			<th>Open</th>
+			<th>Download</th>
+		</tr>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			var templateTitleTr = '<tr><td colspan="3" class="text-center">{content}</td></tr>'
+			var templateIntrucao = $('#instrucao-template').text()
+
+			$.get('data/conteudo-telas.json')
+			.success(function(data) {
+				var dadosTelas = null
+				if(typeof data === 'string') {
+					dadosTelas = JSON.parse(data)
+				} else {
+					dadosTelas = data
+				}
+
+				var table = $('table').find('tbody').first()
+
+				dadosTelas.telas.forEach(function(tela) {
+					var instrucaoId = tela.id.concat('_')
+
+					var loopInstrucoes = function(instrucao, i) {
+						var baseUrlGTranslate = 'http://translate.google.com/translate_tts?tl=pt-BR&q='
+						var url = baseUrlGTranslate.concat(encodeURIComponent(instrucao))
+
+						var instrucaoTr = $(templateIntrucao)
+						$(instrucaoTr).find('.texto').text(instrucao)
+
+						var btn = $(instrucaoTr).find('.open').find('button')
+						$(btn).attr('title', url);
+						$(btn).click(function(e) {
+							var textoCopiar = $(this).parent().siblings('.id').text().trim()
+							window.prompt("Copie o nome para salvar (Ctrl+C, Enter)", textoCopiar)
+							window.open(url, '_blank')
+						})
+
+						var tdDownload = $(instrucaoTr).find('.download')
+						//separa strings com comprimento menor que 100 caracteres
+						var partesMensagem = separaTextoParaGTranslate(instrucao)
+						partesMensagem.forEach(function(mensagem, j) {
+							var a = $('<a class="btn btn-default">download parte {i}</a>'.replace('{i}', j))
+							$(a).attr('download', instrucaoId.concat(i, '_', j))
+							$(a).attr('href', baseUrlGTranslate.concat(encodeURIComponent(mensagem)))
+							$(tdDownload).append(a)
+						})
+
+						var idBtn = $(instrucaoTr).find('.id').find('a');
+						$(idBtn).text(instrucaoId.concat(i))
+						$(idBtn).click(function() {
+							var textoCopiar = $(this).text().trim()
+							window.prompt("Copie o nome para salvar (Ctrl+C, Enter)", textoCopiar)
+						})
+						$(table).append(instrucaoTr)
+					}
+
+					if(!tela._comment) {
+						$(table).append('<tr></tr>')
+						$(table).append(templateTitleTr.replace('{content}', tela.titulo))
+					}
+
+					if(tela._comment) {
+						//não faz nada, json/tela de template
+					} else if(tela.escolhas) {
+						tela.escolhas.forEach(function(escolha) {
+							instrucaoId = instrucaoId.concat(escolha.id, '_')
+
+							$(table).append('<tr></tr>')
+
+							var titulo = tela.titulo.concat(' ', escolha.titulo)
+							$(table).append(templateTitleTr.replace('{content}', titulo))
+
+							if(escolha.instrucoes) {
+								escolha.instrucoes.forEach(loopInstrucoes)
+							} else {
+								tela.titulo.concat(' ', escolha.titulo)
+								$(table).append(templateTitleTr.replace('{content}', 'Erro: Não encontrado instruções da tela: '.concat(titulo)))
+							}
+						})
+					} else if (tela.instrucoes) {
+						tela.instrucoes.forEach(loopInstrucoes)
+					} else {
+						$(table).append(templateTitleTr.replace('{content}', 'Erro: Não encontrado instruções da tela: '.concat(tela.titulo)))
+					}
+
+				})
+
+
+			})
+			.error(function(err) {
+				$('table').find('tbody').html(templateTitleTr.replace('{content}', 'Erro ao obter informações das falas do aplicativo.'))
+			})
+		})
+
+function separaTextoParaGTranslate(texto) {
+	partesMensagem = [ texto ]
+	var pontuacao = '.:;, '
+	while (partesMensagem[partesMensagem.length - 1].length > 100) {
+		var mensagem = partesMensagem[partesMensagem.length - 1].substring(0, 100)
+		var fimMensagem = partesMensagem[partesMensagem.length - 1].substring(100)
+		for(var i = 0; i < pontuacao.length; i++) {
+			var idx = mensagem.lastIndexOf(pontuacao[i])
+			if(idx > -1 && idx <= 100) {
+				var restoMensagem = mensagem.substring(idx + 1)
+				mensagem = mensagem.substring(0, idx + 1)
+				partesMensagem[partesMensagem.length - 1] = mensagem
+				partesMensagem.push(restoMensagem.concat(fimMensagem))
+				break;
+			}
+		}
+		if(mensagem.length > 100) {
+			partesMensagem[partesMensagem.length - 1] = mensagem
+			partesMensagem.push(fimMensagem)
+		}
+	}
+	return partesMensagem
+}
+	</script>
+</body>
+
+</html>
