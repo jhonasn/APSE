@@ -160,15 +160,19 @@ var app = {
 	},
 	correcoesOrientacaoTela: function () {
 		$('#content').css('min-height', window.innerHeight + 'px')
-		var mainBtns = $('#main-btns')
 
-		if($(mainBtns).height() >= window.innerHeight) {
-			$(mainBtns).height(window.innerHeight - (window.innerHeight * 0.2))
-		} else {
-			$(mainBtns).css('height', 'auto')
-		}
+		if(app.tela === 'home') {
+            //ajustes de centralização na tela
+            var mainBtns = $('#main-btns')
 
-		$(mainBtns).css('margin-top', (($(mainBtns).height() / 2) * -1) + 'px')
+            if ($(mainBtns).height() >= window.innerHeight) {
+                $(mainBtns).height(window.innerHeight - (window.innerHeight * 0.2))
+            } else {
+                $(mainBtns).css('height', 'auto')
+            }
+
+            $(mainBtns).css('margin-top', (window.innerHeight - $(mainBtns).height()) / 2)
+        }
 	},
 	show: function() {
 		$('#content').fadeIn('fast', function() {
