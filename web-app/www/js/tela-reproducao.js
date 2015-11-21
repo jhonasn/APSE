@@ -70,13 +70,13 @@ $(document).ready(function() {
 			})
 		},
 		proximoAudio: function(err) {
-			if(!err && player.avancar && player.instrucaoAtual < (app.dadosTela.instrucoes.length - 1)) {
+			if(!err && app.autoplay && player.avancar && player.instrucaoAtual < (app.dadosTela.instrucoes.length - 1)) {
 				player.instrucaoAtual++
 				trocaInstrucaoUI(player.instrucaoAtual)
 				player.reproduzirAudio(player.instrucaoAtual, player.proximoAudio)
 			} else if(err) {
 				alert('Ocorreu um erro ao reproduzir o audio, tente novamente.')
-			} else if(!player.avancar) {
+			} else if(!player.avancar || !app.autoplay) {
 			} else {
 				player.parar()
 			}
@@ -134,7 +134,7 @@ $(document).ready(function() {
 	}
 
 	$('#btn-phone').click(function(e) {
-		window.location.href = 'tel:192'
+		app.ligarEmergencia()
 	})
 
 	trocaInstrucaoUI(player.instrucaoAtual, false)

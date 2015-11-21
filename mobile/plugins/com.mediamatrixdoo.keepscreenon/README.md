@@ -5,10 +5,6 @@ Keeps the display on - disable idle timer screen locking - avoid shutting screen
 
 Cross-platform plugin for Cordova / PhoneGap >= 3.0
 
-#### Supported platforms
-
-Android, iOS, Amazon FireOS
-
 #### Installation
 
 For Cordova:

@@ -39,9 +39,12 @@
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
-		C57AA2A731CE483384530335 /* CDVTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A1B11ECAFD407CBC8A8EE9 /* CDVTTS.m */; };
-		C28FA9D9729042E7B1503053 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F81841723CF4E9EA376FAC4 /* CDVSplashScreen.m */; };
-		CADFD56242DB4DF8965F1CC0 /* KeepScreenOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E72439A819D40F3BA966109 /* KeepScreenOn.m */; settings = {COMPILER_FLAGS = -fno-objc-arc; }; };
+		D1D030423ED44834AE8E9D25 /* KeepScreenOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */; settings = {COMPILER_FLAGS = -fno-objc-arc; }; };
+		D26ADF3476EA4F89A23E962E /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CD8BBC02E941588EB5C406 /* CDVNotification.m */; };
+		4EBE0CF71A9348C5A2F1CEE1 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 373990C933BD4729B9881CC0 /* CDVNotification.bundle */; };
+		D31DEA4DB1AA45298D0AA801 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F499ACE635F4916AB394A0A /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7E1F7792622A4493AAAB7CE6 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */; };
+		E618676DB1944BFE97005961 /* CDVTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = CD14349C4C114B9CA9ECA579 /* CDVTTS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,12 +110,16 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "APSE/config.xml"; sourceTree = "<group>"; };
-		06A1B11ECAFD407CBC8A8EE9 /* CDVTTS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVTTS.m"; path = "com.wordsbaking.cordova.tts/CDVTTS.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		D519C3E827394A63947B87D5 /* CDVTTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVTTS.h"; path = "com.wordsbaking.cordova.tts/CDVTTS.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		3F81841723CF4E9EA376FAC4 /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		F56447D747E54A97AC114696 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		2E72439A819D40F3BA966109 /* KeepScreenOn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "KeepScreenOn.m"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		F2CB038CF60C4A5E97FDA840 /* KeepScreenOn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "KeepScreenOn.h"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "KeepScreenOn.m"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		C4CDF4B803F14661B41F892D /* KeepScreenOn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "KeepScreenOn.h"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		26CD8BBC02E941588EB5C406 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		6C0B5206CA3E46A0A5DB17C7 /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		373990C933BD4729B9881CC0 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
+		7F499ACE635F4916AB394A0A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		0795FB91F5724679B2D09834 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		CD14349C4C114B9CA9ECA579 /* CDVTTS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVTTS.m"; path = "com.wordsbaking.cordova.tts/CDVTTS.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		81C00B79E3A749AB89CE5944 /* CDVTTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVTTS.h"; path = "com.wordsbaking.cordova.tts/CDVTTS.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +131,7 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
+				D31DEA4DB1AA45298D0AA801 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +193,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* APSE-Info.plist */,
+				373990C933BD4729B9881CC0 /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = "APSE/Resources";
@@ -196,6 +205,7 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				7F499ACE635F4916AB394A0A /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,12 +221,14 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				06A1B11ECAFD407CBC8A8EE9 /* CDVTTS.m */,
-				D519C3E827394A63947B87D5 /* CDVTTS.h */,
-				3F81841723CF4E9EA376FAC4 /* CDVSplashScreen.m */,
-				F56447D747E54A97AC114696 /* CDVSplashScreen.h */,
-				2E72439A819D40F3BA966109 /* KeepScreenOn.m */,
-				F2CB038CF60C4A5E97FDA840 /* KeepScreenOn.h */,
+				8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */,
+				C4CDF4B803F14661B41F892D /* KeepScreenOn.h */,
+				26CD8BBC02E941588EB5C406 /* CDVNotification.m */,
+				6C0B5206CA3E46A0A5DB17C7 /* CDVNotification.h */,
+				2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */,
+				0795FB91F5724679B2D09834 /* CDVSplashScreen.h */,
+				CD14349C4C114B9CA9ECA579 /* CDVTTS.m */,
+				81C00B79E3A749AB89CE5944 /* CDVTTS.h */,
 			);
 			name = Plugins;
 			path = "APSE/Plugins";
@@ -370,6 +382,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				4EBE0CF71A9348C5A2F1CEE1 /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,9 +414,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				C57AA2A731CE483384530335 /* CDVTTS.m in Sources */,
-				C28FA9D9729042E7B1503053 /* CDVSplashScreen.m in Sources */,
-				CADFD56242DB4DF8965F1CC0 /* KeepScreenOn.m in Sources */,
+				D1D030423ED44834AE8E9D25 /* KeepScreenOn.m in Sources */,
+				D26ADF3476EA4F89A23E962E /* CDVNotification.m in Sources */,
+				7E1F7792622A4493AAAB7CE6 /* CDVSplashScreen.m in Sources */,
+				E618676DB1944BFE97005961 /* CDVTTS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

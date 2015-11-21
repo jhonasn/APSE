@@ -10,12 +10,15 @@
 				"Garanta a segurança, sinalizando a rodovia, evitando possíveis acidentes.",
 				"Tenha controle da situação, afaste as pessoas.",
 				"Verifique a situação da vítima e do acidente.",
-				"Se o carro estiver ligado, desligue a chave.",
-				"Segure a cabeça do acidentado e não deixe nunca a vítima mover a cabeça, solte apenas quando os paramédicos chegarem e solicitar.",
-				"Veja se o cinto de segurança não está engasgando ou dificultando a pessoa acidentada, se for o caso, solte o cinto devagar, só movimente a pessoa se a mesmo estiver correndo perigo aonde se encontra.",
+				"Se o carro estiver ligado, se possível desligue a chave e puxe o freio de mão.",
+				"Segure a cabeça do acidentado e não deixe nunca a vítima mover a cabeça, solte apenas quando os socorristas chegarem e solicitarem.",
+				"Verifique se não existem objetos obstruindo as vias aéreas da vítima.",
+				"Em hipótese alguma movimente a vítima, somente pessoas treinadas estão aptas a isso.",
+				"Caso a vítima possua fraturas, não mexer para não agravar o quadro.",
+				"Veja se o cinto de segurança não está engasgando ou dificultando a pessoa acidentada, se for o caso, solte o cinto devagar.",
 				"Tente fazer a pessoa se comunicar, evitando que ela se mova.",
-				"Chame a emergência, e tente passar todas as informações do acidente e das vítimas.",
-				"Não de nada para a pessoa beber, não faça torniquetes e não retire o capacete."
+				"Passe o maior número de informações possíveis, sobre o acidente, aos socorristas.",
+				"Não dê nada para a pessoa beber, não faça torniquetes e não retire o capacete."
 			]
 		},
 		{
@@ -24,12 +27,11 @@
 			"titulo": "Epilepsia",
 			"descricao": "",
 			"instrucoes": [
-				"Coloque um travesseiro ou almofada em baixo da cabeça do indivíduo.",
-				"Afrouxe suas roupas, como abrir o cinto ou afrouxar a gravata, por exemplo, retirar óculos e relógio e posicioná-lo deitado de barriga para cima com a cabeça virada para o lado para evitar que o mesmo se engasgue.",
+				"Proteja a cabeça da vítima",
 				"Afaste objetos que possam lesionar o indivíduo.",
-				"Não dê nada para ele beber, não jogue água nem tente segurar o indivíduo. Não tentar forçar a pessoa a ficar quieta.",
-				"Durante o ataque não introduza qualquer objeto na boca nem tente puxar a língua (a teoria de que as pessoas podem \"enrolar a língua\" e asfixiar não tem fundamento).",
-				"Se a vítima não recuperar a consciência dentro de 15 minutos, chame a emergência.",
+				"Afrouxe as roupas da vítima, como abrir o cinto ou afrouxar a gravata, por exemplo, retirar óculos e relógio e posicioná-lo deitado de barriga para cima com a cabeça virada para o lado para evitar que o mesmo se engasgue.",
+				"Não dê nada para a vítima beber, não jogue água nem tente segurar o indivíduo. Não tentar forçar a pessoa a ficar quieta.",
+				"Durante a crise não introduza qualquer objeto na boca nem tente puxar a língua.",
 				"Permaneça com a pessoa até que recupere os sentidos e respire normalmente."
 			]
 		},
@@ -39,12 +41,16 @@
 			"titulo": "Parada Cardíaca",
 			"descricao": "",
 			"instrucoes": [
-				"Antes de tudo, chame o socorro ligando para a emergência.",
-				"Deite a vítima no chão, com a barriga para cima.",
-				"Levante um pouco o queixo para facilitar a respiração.",
-				"Desaperte as roupas, como gravatas e cintos.",
+				"Antes de tudo, chame a emergência.",
+				"Deite a vítima no chão, com a barriga para cima. Afaste curiosos que possam atrapalhar o procedimento.",
+				"Verifique se as vias aéreas não estão obstruídas",
+				"Levante um pouco o queixo da vítima para facilitar a respiração.",
+				"Desaperte as roupas da vítima, como gravatas e cintos.",
+				"Verifique a pulsação da vítima, caso não haja, proceda com a massagem cardíaca",
 				"Na linha imaginária entre os mamilos, apoie uma mão em cima da outra.",
-				"Faça ao menos duas compressões por segundo até a chegada da emergência."
+				"Faça compressões utilizando seu peso para comprimir o equivalente a um terço da altura do tórax da vítima.",
+				"Faça as compressões rítmicas e contínuas até a chegada da emergência.",
+				"Caso possua outra pessoa auxiliando, revezem na massagem cardíaca quando começar a sentir-se cansado."
 			]
 		},
 		{
@@ -58,9 +64,9 @@
 					"titulo": "1º grau",
 					"descricao": "Queimadura que fica vermelhidão e ardência na área afetada",
 					"instrucoes": [
-						"Resfriar bem o local com água fria ou soro fisiológico em abundância, até que a dor amenize.",
-						"Não retirar roupa ou tecidos que ficarem “colados” a pele.",
-						"Não estourar as bolhas ou retirar a pele das que já estouraram.",
+						"Resfriar bem o local com água corrente ou soro fisiológico em abundância, até que a dor amenize.",
+						"Não aplique nada sobre o local afetado.",
+						"Não retirar roupa ou tecidos que ficarem “colados” à pele.",
 						"Não passar gelo sobre a queimadura, pois o gelo também queima.",
 						"Não aplicar soluções caseiras como: pó de café, manteiga, creme dental, entre outros."
 					]
@@ -71,13 +77,11 @@
 					"titulo": "2º grau",
 					"descricao": "Aparecem bolhas no local afetado",
 					"instrucoes": [
-						"Resfriar bem o local com água fria ou soro fisiológico em abundância.",
-						"Sem esfregar, deve-se lavar a área com cuidado, utilizando antisséptico ou sabão neutro, não usar álcool.",
-						"Não “estourar” bolhas que se formarem no local e nem retirar pele que já estiverem arrebentadas, colocar uma gaze úmida no local após o local esfriar e a dor diminuir.",
-						"O curativo deve permanecer 24 horas sob a região da queimadura e somente após esse tempo deve ser exposta ao livre para evitar infecções.",
-						"Não retirar roupa ou tecidos que ficarem “colados” a pele.",
-						"Não estourar as bolhas ou retirar a pele das que já estouraram.",
-						"Não passar gelo sobre a queimadura, pois o gelo também queima.",
+						"Resfriar bem o local com água corrente ou soro fisiológico em abundância.",
+						"Sem esfregar, deve-se lavar a área com cuidado, utilizando somente agua, não usar álcool.",
+						"Não “estourar” bolhas que se formarem no local e nem retirar pele que já esteja danificada, colocar uma gaze úmida no local após esfriar e a dor diminuir.",
+						"O curativo deve permanecer 48 horas sob a região da queimadura e somente após esse tempo pode ser exposta ao livre para evitar infecções.",
+						"Não retirar roupa ou tecidos que ficarem “colados” à pele.",
 						"Não aplicar soluções caseiras como: pó de café, manteiga, creme dental, entre outros."
 					]
 				},
@@ -87,14 +91,15 @@
 					"titulo": "3º grau",
 					"descricao": "Atingem uma área profunda da pele",
 					"instrucoes": [
-						"Resfriar bem o local com água fria ou soro fisiológico em abundância.\nChame a emergência.",
-						"Sem esfregar, deve-se lavar a área com cuidado, utilizando antisséptico ou sabão neutro, não usar álcool.",
-						"Envolver a área afetada em um lençol limpo e molhado com soro fisiológico ou com água fria.",
+						"Resfriar bem o local com água fria ou soro fisiológico em abundância.",
+						"Sem esfregar, deve-se lavar a área com cuidado, utilizando somente água corrente, não usar álcool.",
+						"Envolver a área afetada em um lençol limpo e molhado com soro fisiológico ou com água.",
 						"Por se tratar de uma queimadura grave, a vítima deve receber atendimento médico de forma mais rápida possível.",
-						"Não retirar roupa ou tecidos que ficarem “colados” a pele.",
+						"Não retirar roupa ou tecidos que ficarem “colados” à pele.",
 						"Não estourar as bolhas ou retirar a pele das que já estouraram.",
 						"Não passar gelo sobre a queimadura, pois o gelo também queima.",
-						"Não aplicar soluções caseiras como: pó de café, manteiga, creme dental, entre outros."
+						"Não aplicar soluções caseiras como: pó de café, manteiga, creme dental, entre outros.",
+						"Mantenha a vítima aquecida, pois ocorre hipotermia (perda de calor), preservar a área afetada."
 					]
 				}
 			]
@@ -107,16 +112,17 @@
 				{
 					"id": "engasgo-bebes-criancas",
 					"icone": "btn-amarelo",
-					"titulo": "Engasgo Bebês e Crianças",
+					"titulo": "Engasgo Bebês e Crianças Pequenas",
 					"descricao": "",
 					"instrucoes": [
-						"Coloque a criança de barriga para baixo em seu braço, de modo que a cabeça fique mais baixa.",
+						"Mantenha a calma e chame a emergência.",
+						"Quando possível, coloque a criança de barriga para baixo em seu braço, de modo que a cabeça fique mais baixa.",
 						"Segure o queixo com a mão do braço em que a criança está apoiada.",
 						"Com a outra mão faça cinco compressões no meio das costas.",
-						"<strong>Caso continue o engasgo</strong>",
-						"Vire a criança de cabeça para cima.",
+						"Reavalie o estado da criança, Caso continue o engasgo, repita a manobra.",
+						"Caso nada funcione e houver ausência de batimentos cardíacos, inicie a manobra de parada cardiorrespiratória.",
 						"Com dois dedos faça cinco compressões no tórax, abaixo da linha imaginária que liga um mamilo ao outro.",
-						"Se nada funcionar, chame a emergência."
+						"Mesmo que o processo tenha sido bem-sucedido, leve a criança a uma unidade de saúde para avaliação."
 					]
 				},
 				{
@@ -127,10 +133,11 @@
 					"instrucoes": [
 						"Fique de pé atrás da vítima.",
 						"Passe o braço em torno do tronco da vítima.",
+						"Posicione sua perna de apoio entre as pernas da vítima para segurá-la em caso de queda.",
 						"Cerre o punho da mão direita e coloque-a sobre a boca do estômago da vítima.",
 						"Coloque a outra mão sobre o punho cerrado.",
 						"Faça pressão com as mãos contra o estômago da vítima para dentro e para cima.",
-						"Caso a vítima continue engasgada e sem conseguir respirar por mais de 30 segundos, é recomendado chamar ajuda médica."
+						"Caso a vítima continue engasgada, repita a manobra."
 					]
 				}
 			]
@@ -141,12 +148,15 @@
 			"titulo": "Afogamento",
 			"descricao": "",
 			"instrucoes": [
-				"Se a vítima estiver em apneia (falta de respiração), utilize a respiração boca a boca, assoprando vigorosamente o ar dentro da cavidade bucal dela em intervalos regulares.",
+				"Deite a vítima de lado, para que os fluídos não engasguem a pessoa.",
+				"Se a vítima estiver em apneia (falta de respiração), e você se sentir à vontade para tal, utilize a respiração boca a boca, assoprando vigorosamente o ar dentro da cavidade bucal dela em intervalos regulares, preserve sua segurança durante a respiração boca a boca, utilizando uma barreira. Exemplo: plástico furado.",
 				"Realize sopros ritmados com intervalos de aproximadamente cinco segundos.",
 				"Prossiga com a manobra até que a vítima possa respirar sozinha.",
-				"Verifique o pulso e se a vítima estiver sem pulso realize massagem cardíaca.",
-				"Com o indivíduo deitado, posicione as mãos sobre o peito da vítima, entre os mamilos.",
-				"Com os braços esticados, empurre as suas mãos com força, utilizando o peso do seu próprio corpo, contando, no mínimo, 2 empurrões por segundo até a chegada do serviço de resgate."
+				"Verifique a pulsação e se a vítima estiver sem pulso realize massagem cardíaca.",
+				"Na linha imaginária entre os mamilos, apoie uma mão em cima da outra.",
+				"Faça compressões utilizando seu peso para comprimir o equivalente a um terço da altura do tórax da vítima.",
+				"Faça as compressões rítmicas e contínuas até a chegada da emergência.",
+				"Caso possua outra pessoa auxiliando, revezem na massagem cardíaca quando começar a sentir-se cansado."
 			]
 		},
 		{
@@ -156,12 +166,16 @@
 			"descricao": "",
 			"instrucoes": [
 				"Mantenha calma e garanta que o ambiente não fornece riscos para uma nova queda.",
-				"Se a queda for grave como acidente de moto, queda acima de dois metros ou contato forte com o chão durante a queda solicite logo o auxílio médico.",
-				"Observe se a vítima está consciente e responde quando é chamada, se estiver consciente a oriente para não fazer nenhum movimento, caso esteja inconsciente verifique sua respiração, caso não esteja respirando de forma correta efetue massagem cardíaca até chegar ajuda médica.",
-				"Em caso de sangramento fazer pressão sobre o local da hemorragia com um pano limpo por, pelo menos, dez minutos ou até chegada da ajuda médica.",
+				"Se a queda for grave, acima de dois metros ou contato forte com o chão, solicite logo o auxílio médico.",
+				"Realize o controle cervical, não permitindo que a vítima movimente a cabeça.",
+				"Observe se a vítima está consciente e responde quando é chamada, se estiver consciente a oriente para não fazer nenhum movimento.",
+				"Em caso de sangramento fazer pressão sobre o local da hemorragia com um pano limpo por, pelo menos dez minutos ou até chegada da ajuda médica, salvo sangramento em cabeça, ouvido e nariz.",
 				"Em caso de fratura (Para fratura exposta não realize nenhuma ação) imobilizar o membro lesionado na posição em que está com tábuas, ataduras ou lençóis.",
-				"Para fazer a massagem cardíaca com o indivíduo deitado, posicione as mãos sobre o peito da vítima, entre os mamilos.",
-				"Com os braços esticados, empurre as suas mãos com força, utilizando o peso do seu próprio corpo, contando, no mínimo, dois empurrões por segundo até a chegada do serviço de resgate. É importante deixar que o tórax do paciente volte à posição normal entre cada empurrão. Caso tenha mais alguma pessoa para ajudar, devem revezar a massagem cardíaca a cada dois minutos."
+				"Verifique a pulsação e se a vítima estiver sem pulso realize massagem cardíaca.",
+				"Na linha imaginária entre os mamilos, apoie uma mão em cima da outra.",
+				"Faça compressões utilizando seu peso para comprimir o equivalente a um terço da altura do tórax da vítima.",
+				"Faça as compressões rítmicas e contínuas até a chegada da emergência.",
+				"Caso possua outra pessoa auxiliando, revezem na massagem cardíaca quando começar a sentir-se cansado."
 			]
 		},
 		{
@@ -176,8 +190,9 @@
 					"descricao": "",
 					"instrucoes": [
 						"Antes de prestar o atendimento necessário lave bem suas mãos com água e sabão para não transmitir bactérias e germes para os ferimentos.",
-						"Limpe o local do ferimento com um pano ou gaze umedecido suficiente para identificar o local do ferimento.",
-						"Com panos e gazes limpos pressione o local ferido até estancar o ferimento.",
+						"Limpe o local do ferimento com um pano ou gaze umedecido em soro fisiológico.",
+						"Caso tenha algum objeto transpassando a vítima, não o retire.",
+						"Com panos e gazes limpos pressione o local ferido até estancar o ferimento, com exceção da região da cabeça.",
 						"Se o sangramento não parar de 5 a 10 minutos procurar um atendimento de urgência e emergência.",
 						"Se houver necessidade de sutura (ponto), deve-se procurar uma unidade hospitalar.",
 						"Não deixe o ferimento exposto ao ar livre, sujeito a contaminações e infecções."
@@ -189,13 +204,16 @@
 					"titulo": "Hemorragia Externa",
 					"descricao": "É o tipo de sangramento exterior ao corpo, ou seja, que é facilmente visível. Pode ocorrer em camadas superficiais da pele por corte ou perfurações, ou mesmo atingindo áreas mais profundas através de aberturas ou orifícios gerados por traumas.\nÉ necessário manter e transmitir a calma diante da situação, passando à vítima confiança.",
 					"instrucoes": [
-						"Deite a pessoa em posição horizontal, pois facilita a circulação sanguínea entre o coração e o cérebro, e mantenha a área afetada acima do corpo.",
-						"Aplique sobre o corte, perfuração ou ferimento, uma compressa com gaze, ou um pano limpo (se possível antes, use luvas descartáveis, a fim de evitar possíveis contaminações), fazendo uma pressão firme sobre o local com uma ou com as duas mãos, ou mesmo com um dedo, ou ainda uma ligadura, dependendo do tamanho e do local do ferimento.",
+						"É necessário manter e transmitir a calma diante da situação, passando à vítima confiança.",
+						"Se possível, utilize luvas descartáveis.",
+						"Mantenha a pessoa deitada, pois facilita a circulação sanguínea entre o coração e o cérebro, e mantenha a área afetada acima do corpo.",
+						"Caso tenha algum objeto transpassando a vítima, não o retire.",
+						"Aplique sobre o corte, perfuração ou ferimento, uma compressa com gaze, ou um pano limpo e seco, fazendo uma pressão firme sobre o local com uma ou com as duas mãos, ou mesmo com um dedo, ou ainda uma faixa, dependendo do tamanho e do local do ferimento.",
 						"Se o pano ou gaze ficar encharcado com sangue, este não deve ser trocado, mas mantido no lugar e colocado outro por cima, para não interromper o processo de coagulação do sangue que está sendo contido.",
 						"Continuar a compressão até que a hemorragia estanque (no mínimo 10 min.).",
 						"Em seguida, faça uma ligadura compressiva (que é um curativo bem preso e com certa pressão sobre a região afetada) no local da hemorragia.",
 						"Durante todo esse processo, deve-se manter a vítima calma e acordada, não dar nada para comer ou para beber e mantê-la aquecida.",
-						"No caso de hemorragias nos membros com muita abundância de sangue, das quais não se pôde conter após ter aplicado as técnicas acima mencionadas, deve-se transportar a vítima imediatamente a uma unidade de saúde mais próxima."
+						"No caso de hemorragias nos membros com abundância de sangue, das quais não se pôde conter após ter aplicado as técnicas acima mencionadas, deve-se transportar a vítima, com o membro afetado elevado, imediatamente a uma unidade de saúde mais próxima."
 					]
 				}
 			]

@@ -3,6 +3,7 @@ var app = {
 	tela: null,
 	dadosTelas: null,
 	dadosTela: null,
+	autoplay: true,
 	ready: function() {
 		var btnHome = $('#btn-home')
 		if(btnHome.length) {
@@ -14,7 +15,31 @@ var app = {
 				})
 			})
 		}
+
+		var autoplayEl = $('#autoplay')
+		$(autoplayEl).find('.btn-success').click(function() {
+			app.autoplay = true
+			app.autoplayChangeUI()
+		})
+		$(autoplayEl).find('.btn-default').click(function() {
+			app.autoplay = false
+			app.autoplayChangeUI()
+		})
+		app.autoplayChangeUI()
+
 		app.show()
+	},
+	autoplayChangeUI: function () {
+        var autoplayEl = $('#autoplay')
+        $(autoplayEl).find('.btn').removeClass('active')
+		if(app.autoplay) {
+			$(autoplayEl).find('.btn-success').addClass('active')
+		} else {
+			$(autoplayEl).find('.btn-default').addClass('active')
+		}
+    },
+	ligarEmergencia: function() {
+		window.location.href = 'tel:192'
 	},
 	getDadosTelas: function() {
 		$.get('data/conteudo-telas.json')
@@ -47,7 +72,10 @@ var app = {
 		svgDocOnLoad = function() {
 			svgDoc = svgDoc.contentDocument
 
+			var timeMouseDown = null
+
 			$(svgDoc).find('g[id].clicable').on('touchstart', function() {
+				timeMouseDown = new Date()
 				var selecionado = $(this).attr('id')
 				var telaContent = app.dadosTelas.telas.filter(function(t) {
 					return t.icone === selecionado
@@ -55,15 +83,20 @@ var app = {
 
 				var elNomeElSelecionado = $('#nome-btn-selecionado')
 				$(elNomeElSelecionado).text(telaContent.titulo)
-				$(elNomeElSelecionado).show()
+				$(elNomeElSelecionado).visible()
 			})
 
 			$(svgDoc).find('g[id].clicable').on('touchend', function() {
 				var elNomeElSelecionado = $('#nome-btn-selecionado')
-				$(elNomeElSelecionado).hide()
+				$(elNomeElSelecionado).invisible()
 			})
 
 			$(svgDoc).find('g[id].clicable').click(function() {
+				timeMouseDown = new Date() - timeMouseDown
+                if(timeMouseDown >= 200) {
+                    return
+                }
+
 				$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
 				$(this).fadeTo('fast', 0.6)
 				var selecionado = $(this).attr('id')
@@ -160,18 +193,22 @@ var app = {
 	},
 	correcoesOrientacaoTela: function () {
 		$('#content').css('min-height', window.innerHeight + 'px')
+        // $('#content').css('height', window.innerHeight + 'px')
 
-		if(app.tela === 'home') {
+        if(app.tela === 'home') {
             //ajustes de centralização na tela
             var mainBtns = $('#main-btns')
+			var hBtns = $(mainBtns).height()
+            var hTitulo = $('#nome-btn-selecionado').height()
+			var hTela = window.innerHeight
 
-            if ($(mainBtns).height() >= window.innerHeight) {
-                $(mainBtns).height(window.innerHeight - (window.innerHeight * 0.2))
+            if ($(mainBtns).height() >= (hTela - hTitulo)) {
+                $(mainBtns).height(hTela - hTitulo - (hTela * 0.2))
             } else {
                 $(mainBtns).css('height', 'auto')
             }
 
-            $(mainBtns).css('margin-top', (window.innerHeight - $(mainBtns).height()) / 2)
+            $(mainBtns).css('margin-top', ((hTela / 2) - (hBtns / 2) - hTitulo))
         }
 	},
 	show: function() {
@@ -217,9 +254,34 @@ var mainReady = function() {
 		}
 	})
 
+	navigator.notification.confirm(
+		'Antes de qualquer coisa, ligue para a emergência',
+		function (btnIdx) {
+			if(btnIdx === 1) {
+					app.ligarEmergencia()
+			}
+		},
+		'Ligar para emergência',
+		['Ligar', 'Fechar']
+	)
+
 	app.correcoesOrientacaoTela()
 	app.getDadosTelas()
 	app.ready()
 }
 
-$(document).ready(mainReady)
+$(document).on('deviceready', mainReady)
+
+jQuery.fn.visible = function() {
+    return this.css('visibility', 'visible')
+}
+
+jQuery.fn.invisible = function() {
+    return this.css('visibility', 'hidden')
+}
+
+jQuery.fn.visibilityToggle = function() {
+    return this.css('visibility', function(i, visibility) {
+        return (visibility == 'visible') ? 'hidden' : 'visible'
+    })
+}
