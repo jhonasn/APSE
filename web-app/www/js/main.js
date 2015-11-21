@@ -222,7 +222,7 @@ var app = {
                 $(mainBtns).css('height', 'auto')
             }
 
-            $(mainBtns).css('margin-top', ((hTela / 2) - (hBtns / 2) - hTitulo))
+            $(mainBtns).css('margin-top', Math.floor((hTela / 2) - (hBtns / 2) - hTitulo))
         }
     },
     show: function() {
@@ -278,6 +278,9 @@ var mainReady = function() {
         app.ligarEmergencia()
     })
     $(ligarAlert).modal('show')
+    $(ligarAlert).on('hide.bs.modal', app.correcoesOrientacaoTela)
+
+    setTimeout(app.correcoesOrientacaoTela, 500)
 
     app.correcoesOrientacaoTela()
     app.getDadosTelas()

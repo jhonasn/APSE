@@ -208,7 +208,7 @@ var app = {
                 $(mainBtns).css('height', 'auto')
             }
 
-            $(mainBtns).css('margin-top', ((hTela / 2) - (hBtns / 2) - hTitulo))
+            $(mainBtns).css('margin-top', Math.floor((hTela / 2) - (hBtns / 2) - hTitulo))
         }
 	},
 	show: function() {
@@ -260,6 +260,7 @@ var mainReady = function() {
 			if(btnIdx === 1) {
 					app.ligarEmergencia()
 			}
+			app.correcoesOrientacaoTela()
 		},
 		'Ligar para emergência',
 		['Ligar', 'Fechar']
@@ -271,6 +272,7 @@ var mainReady = function() {
 }
 
 $(document).on('deviceready', mainReady)
+$(document).ready(app.correcoesOrientacaoTela)
 
 jQuery.fn.visible = function() {
     return this.css('visibility', 'visible')

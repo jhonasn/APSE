@@ -260,6 +260,7 @@ var mainReady = function() {
 			if(btnIdx === 1) {
 					app.ligarEmergencia()
 			}
+			app.correcoesOrientacaoTela()
 		},
 		'Ligar para emergência',
 		['Ligar', 'Fechar']
@@ -271,6 +272,7 @@ var mainReady = function() {
 }
 
 $(document).on('deviceready', mainReady)
+$(document).ready(app.correcoesOrientacaoTela)
 
 jQuery.fn.visible = function() {
     return this.css('visibility', 'visible')
