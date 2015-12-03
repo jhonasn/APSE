@@ -63,3 +63,12 @@
 	-ms-user-select: none;
 	user-select:none;
 }
+
+#main-btns, #modo-continuo {
+	position: absolute;
+	top: 50%;
+}
+
+#modo-continuo {
+	left: 50%;
+}

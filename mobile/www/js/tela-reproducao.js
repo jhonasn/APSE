@@ -49,7 +49,7 @@ $(document).ready(function() {
 			TTS.speak({
 				text: app.dadosTela.instrucoes[id],
 				locale: 'pt-BR',
-				//rate: 0.75
+				rate: 1.5
 			}, function() {
 				cb(null)
 			}, function(err) {

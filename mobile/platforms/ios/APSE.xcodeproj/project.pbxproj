@@ -27,7 +27,10 @@
 		30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */; };
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
+		3246A4069F2C4EF398405A14 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 83829E5606AC49308437CAA6 /* CDVSplashScreen.m */; };
+		3D6663EDA85F4D21A10F53C0 /* KeepScreenOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7151CF7E1C644EA6968D2B7D /* KeepScreenOn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
+		776CDA72825C438BAB47D399 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6E7F7AD11244A5B639CAC0 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7E7966DE1810823500FA85AD /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D41810823500FA85AD /* icon-40.png */; };
 		7E7966DF1810823500FA85AD /* icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D51810823500FA85AD /* icon-40@2x.png */; };
 		7E7966E01810823500FA85AD /* icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966D61810823500FA85AD /* icon-50.png */; };
@@ -38,13 +41,10 @@
 		7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DB1810823500FA85AD /* icon-76@2x.png */; };
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
+		C54C8C68D5EA45548A8413B0 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BB46562724E23938A99A6 /* CDVNotification.bundle */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
-		D1D030423ED44834AE8E9D25 /* KeepScreenOn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */; settings = {COMPILER_FLAGS = -fno-objc-arc; }; };
-		D26ADF3476EA4F89A23E962E /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CD8BBC02E941588EB5C406 /* CDVNotification.m */; };
-		4EBE0CF71A9348C5A2F1CEE1 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 373990C933BD4729B9881CC0 /* CDVNotification.bundle */; };
-		D31DEA4DB1AA45298D0AA801 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F499ACE635F4916AB394A0A /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7E1F7792622A4493AAAB7CE6 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */; };
-		E618676DB1944BFE97005961 /* CDVTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = CD14349C4C114B9CA9ECA579 /* CDVTTS.m */; };
+		F779B9C36E8146D9AD076F08 /* CDVTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9F7B4426D4EAF91654A2A /* CDVTTS.m */; };
+		F9479ACFD8CA464CB7C6E85D /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C01E431024B599CB715C0 /* CDVNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +67,10 @@
 /* Begin PBXFileReference section */
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* APSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APSE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F766FDD13BBADB100FB74C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		1F766FE013BBADB100FB74C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* APSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2EF9F7B4426D4EAF91654A2A /* CDVTTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVTTS.m; path = com.wordsbaking.cordova.tts/CDVTTS.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -93,7 +92,11 @@
 		30C1856519D5FC0A00212699 /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* APSE-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APSE-Prefix.pch"; sourceTree = "<group>"; };
+		3B7BB46562724E23938A99A6 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5D74800ECF4F4DC198F011CA /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; };
+		7151CF7E1C644EA6968D2B7D /* KeepScreenOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeepScreenOn.m; path = com.mediamatrixdoo.keepscreenon/KeepScreenOn.m; sourceTree = "<group>"; };
+		7C3F09CCDC56457D929AF229 /* KeepScreenOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeepScreenOn.h; path = com.mediamatrixdoo.keepscreenon/KeepScreenOn.h; sourceTree = "<group>"; };
 		7E7966D41810823500FA85AD /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		7E7966D51810823500FA85AD /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
 		7E7966D61810823500FA85AD /* icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-50.png"; sourceTree = "<group>"; };
@@ -104,22 +107,17 @@
 		7E7966DB1810823500FA85AD /* icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76@2x.png"; sourceTree = "<group>"; };
 		7E7966DC1810823500FA85AD /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		7E7966DD1810823500FA85AD /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
+		83829E5606AC49308437CAA6 /* CDVSplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = org.apache.cordova.splashscreen/CDVSplashScreen.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* APSE-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "APSE-Info.plist"; path = "../APSE-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		AE6E7F7AD11244A5B639CAC0 /* AudioToolbox.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AF27BBAA902046E1993B9327 /* CDVSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = org.apache.cordova.splashscreen/CDVSplashScreen.h; sourceTree = "<group>"; };
+		CD7C01E431024B599CB715C0 /* CDVNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
-		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "APSE/config.xml"; sourceTree = "<group>"; };
-		8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "KeepScreenOn.m"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		C4CDF4B803F14661B41F892D /* KeepScreenOn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "KeepScreenOn.h"; path = "com.mediamatrixdoo.keepscreenon/KeepScreenOn.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		26CD8BBC02E941588EB5C406 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		6C0B5206CA3E46A0A5DB17C7 /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		373990C933BD4729B9881CC0 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
-		7F499ACE635F4916AB394A0A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
-		2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		0795FB91F5724679B2D09834 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		CD14349C4C114B9CA9ECA579 /* CDVTTS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVTTS.m"; path = "com.wordsbaking.cordova.tts/CDVTTS.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		81C00B79E3A749AB89CE5944 /* CDVTTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVTTS.h"; path = "com.wordsbaking.cordova.tts/CDVTTS.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		F0CBAE22A7784E14ADEBE27D /* CDVTTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVTTS.h; path = com.wordsbaking.cordova.tts/CDVTTS.h; sourceTree = "<group>"; };
+		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = APSE/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +129,7 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
-				D31DEA4DB1AA45298D0AA801 /* AudioToolbox.framework in Frameworks */,
+				776CDA72825C438BAB47D399 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,7 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 			);
 			name = Classes;
-			path = "APSE/Classes";
+			path = APSE/Classes;
 			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -184,7 +182,7 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
-			path = "APSE";
+			path = APSE;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -193,10 +191,10 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* APSE-Info.plist */,
-				373990C933BD4729B9881CC0 /* CDVNotification.bundle */,
+				3B7BB46562724E23938A99A6 /* CDVNotification.bundle */,
 			);
 			name = Resources;
-			path = "APSE/Resources";
+			path = APSE/Resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -205,7 +203,7 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
-				7F499ACE635F4916AB394A0A /* AudioToolbox.framework */,
+				AE6E7F7AD11244A5B639CAC0 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,17 +219,17 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				8DF5CACE5AFA4E7482F6E0CA /* KeepScreenOn.m */,
-				C4CDF4B803F14661B41F892D /* KeepScreenOn.h */,
-				26CD8BBC02E941588EB5C406 /* CDVNotification.m */,
-				6C0B5206CA3E46A0A5DB17C7 /* CDVNotification.h */,
-				2885D49959B84ED3B473BB4F /* CDVSplashScreen.m */,
-				0795FB91F5724679B2D09834 /* CDVSplashScreen.h */,
-				CD14349C4C114B9CA9ECA579 /* CDVTTS.m */,
-				81C00B79E3A749AB89CE5944 /* CDVTTS.h */,
+				7151CF7E1C644EA6968D2B7D /* KeepScreenOn.m */,
+				7C3F09CCDC56457D929AF229 /* KeepScreenOn.h */,
+				2EF9F7B4426D4EAF91654A2A /* CDVTTS.m */,
+				F0CBAE22A7784E14ADEBE27D /* CDVTTS.h */,
+				CD7C01E431024B599CB715C0 /* CDVNotification.m */,
+				5D74800ECF4F4DC198F011CA /* CDVNotification.h */,
+				83829E5606AC49308437CAA6 /* CDVSplashScreen.m */,
+				AF27BBAA902046E1993B9327 /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
-			path = "APSE/Plugins";
+			path = APSE/Plugins;
 			sourceTree = SOURCE_ROOT;
 		};
 		308D052D1370CCF300D202BF /* icons */ = {
@@ -299,8 +297,8 @@
 			dependencies = (
 				301BF551109A68C00062928A /* PBXTargetDependency */,
 			);
-			name = "APSE";
-			productName = "APSE";
+			name = APSE;
+			productName = APSE;
 			productReference = 1D6058910D05DD3D006BFB54 /* APSE.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -311,8 +309,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				ORGANIZATIONNAME = "Faculdade CNEC Campo Largo";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = D6E7679J58;
+					};
+				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "__CLI__" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "APSE" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -382,7 +386,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
-				4EBE0CF71A9348C5A2F1CEE1 /* CDVNotification.bundle in Resources */,
+				C54C8C68D5EA45548A8413B0 /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cordova/lib/copy-www-build-step.sh";
+			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,10 +418,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				D1D030423ED44834AE8E9D25 /* KeepScreenOn.m in Sources */,
-				D26ADF3476EA4F89A23E962E /* CDVNotification.m in Sources */,
-				7E1F7792622A4493AAAB7CE6 /* CDVSplashScreen.m in Sources */,
-				E618676DB1944BFE97005961 /* CDVTTS.m in Sources */,
+				3D6663EDA85F4D21A10F53C0 /* KeepScreenOn.m in Sources */,
+				F779B9C36E8146D9AD076F08 /* CDVTTS.m in Sources */,
+				F9479ACFD8CA464CB7C6E85D /* CDVNotification.m in Sources */,
+				3246A4069F2C4EF398405A14 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +441,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -458,7 +463,7 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "APSE";
+				PRODUCT_NAME = APSE;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -468,6 +473,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "APSE/APSE-Prefix.pch";
@@ -487,7 +493,7 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "APSE";
+				PRODUCT_NAME = APSE;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -559,6 +565,7 @@
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
+					"\"$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
@@ -591,7 +598,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "__CLI__" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "APSE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

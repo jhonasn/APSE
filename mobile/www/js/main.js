@@ -4,15 +4,17 @@ var app = {
 	dadosTelas: null,
 	dadosTela: null,
 	autoplay: true,
+	mostrouLigar: false,
+	tempoCorrecaoTela: 0,
 	ready: function() {
 		var btnHome = $('#btn-home')
 		if(btnHome.length) {
 			$(btnHome).off('click')
 			$(btnHome).click(function(e) {
-				$('#content').fadeOut('fast', function() {
-					$('#content').hide()
-					app.abrirTelaHome()
-				})
+				// $('#content').fadeOut('fast', function() {
+				// 	$('#content').hide()
+				app.abrirTelaHome()
+				// })
 			})
 		}
 
@@ -63,6 +65,7 @@ var app = {
 			$('#content').html(content)
 			svgDoc = $('#main-btns').get(0)
 			$(svgDoc).on('load', svgDocOnLoad)
+			$(svgDoc).ready(app.correcoesOrientacaoTela)
 			$('#content').ready(mainReady)
 		})
 		.error(function(err) {
@@ -92,11 +95,6 @@ var app = {
 			})
 
 			$(svgDoc).find('g[id].clicable').click(function() {
-				timeMouseDown = new Date() - timeMouseDown
-                if(timeMouseDown >= 200) {
-                    return
-                }
-
 				$(svgDoc).find('g[id].clicable').fadeTo('fast', 1)
 				$(this).fadeTo('fast', 0.6)
 				var selecionado = $(this).attr('id')
@@ -118,6 +116,8 @@ var app = {
 				}
 			})
 		}
+
+		app.correcoesOrientacaoTela()
 	},
 	abrirTelaReproducao: function(dadosTela) {
 		app.tela = 'reproducao'
@@ -125,8 +125,8 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-reproducao.html')
 		.success(function(content) {
-			$('#content').fadeOut('fast')
-			$('#content').hide()
+			// $('#content').fadeOut('fast')
+			// $('#content').hide()
 			content = content.replace(/\{titulo\}/g, dadosTela.titulo)
 			.replace(/\{icone\}/g, dadosTela.icone)
 
@@ -155,8 +155,8 @@ var app = {
 		app.dadosTela = dadosTela
 		$.get('templates/tela-escolha.html')
 		.success(function(content) {
-			$('#content').fadeOut('fast')
-			$('#content').hide()
+			// $('#content').fadeOut('fast')
+			// $('#content').hide()
 			content = $(content)
 
 			var principal = $(content).children().filter('#detalhes-tela')
@@ -198,24 +198,43 @@ var app = {
         if(app.tela === 'home') {
             //ajustes de centralização na tela
             var mainBtns = $('#main-btns')
-			var hBtns = $(mainBtns).height()
-            var hTitulo = $('#nome-btn-selecionado').height()
-			var hTela = window.innerHeight
+            var mcBtns = $('#modo-continuo')
+			// var hBtns = $(mainBtns).height()
+			// var hModoContinuo = $(modoContinuo).height()
+   //          var hTitulo = $('#nome-btn-selecionado').height()
+			// var hTela = window.innerHeight
 
-            if ($(mainBtns).height() >= (hTela - hTitulo)) {
-                $(mainBtns).height(hTela - hTitulo - (hTela * 0.2))
-            } else {
-                $(mainBtns).css('height', 'auto')
-            }
+   //          if ($(mainBtns).height() >= (hTela - hTitulo)) {
+   //              $(mainBtns).height(hTela - hTitulo - (hTela * 0.2))
+   //          } else {
+   //              $(mainBtns).css('height', 'auto')
+   //          }
 
-            $(mainBtns).css('margin-top', Math.floor((hTela / 2) - (hBtns / 2) - hTitulo))
+   //          var distanciaTopMainBtns = hTela / 2 //Math.floor((hTela / 2) - (hBtns / 2))
+   //          var distanciaTopModoContinuo = distanciaTopMainBtns + ((hBtns / 2) + 20)
+
+   //          $(mainBtns).css('margin-top', distanciaTopMainBtns * -1)
+   //          $(modoContinuo).css('margin-top', distanciaTopModoContinuo * -1)
+   			$(mainBtns).css('margin-top', ($(mainBtns).height() / 2) * -1)
+   			$(mcBtns).css('margin-top', ($(mainBtns).height() / 2) + 20)
+   			$(mcBtns).css('margin-left', ($(mcBtns).width() / 2) * -1)
         }
 	},
 	show: function() {
-		$('#content').fadeIn('fast', function() {
-			$('#content').show()
+		// $('#content').fadeIn('fast', function() {
+			// $('#content').show()
 			app.correcoesOrientacaoTela()
-		})
+		// })
+	},
+	correcaoTela: function() {
+		var tempo = (new Date()) - app.tempoCorrecaoTela
+		console.log('correcao tela: '.concat(tempo))
+
+		app.correcoesOrientacaoTela()
+
+		if(tempo < 1000) {
+			setTimeout(app.correcaoTela, 50)
+		}		
 	}
 }
 
@@ -237,42 +256,49 @@ var mainReady = function() {
 		$('html,body').animate({ scrollTop: 0 }, 'slow')
 	})
 
-	window.onresize = app.correcoesOrientacaoTela
-	$(document).on('deviceready', app.correcoesOrientacaoTela)
-	$(document).on('deviceready', function() {
-		window.navigator.splashscreen.hide()
-	})
+	// $(document).on('deviceready', function() {
+	// 	window.navigator.splashscreen.hide()
+	// })
 
 	$(document).on('backbutton', function() {
 		if(app.tela !== 'home') {
-			$('#content').fadeOut('fast', function() {
-				$('#content').hide()
+			// $('#content').fadeOut('fast', function() {
+				// $('#content').hide()
 				app.abrirTelaHome()
-			})
+			// })
 		} else {
 			navigator.app.exitApp()
 		}
 	})
 
-	navigator.notification.confirm(
-		'Antes de qualquer coisa, ligue para a emergência',
-		function (btnIdx) {
-			if(btnIdx === 1) {
-					app.ligarEmergencia()
-			}
-			app.correcoesOrientacaoTela()
-		},
-		'Ligar para emergência',
-		['Ligar', 'Fechar']
-	)
-
 	app.correcoesOrientacaoTela()
+
+	if(!app.mostrouLigar) {
+		navigator.notification.confirm(
+			'Antes de qualquer coisa, ligue para a emergência',
+			function (btnIdx) {
+				if(btnIdx === 1) {
+						app.ligarEmergencia()
+				}
+				app.correcoesOrientacaoTela()
+			},
+			'Ligar para emergência',
+			['Ligar', 'Fechar']
+		)
+		app.mostrouLigar = true
+	}
+	
 	app.getDadosTelas()
 	app.ready()
+	app.correcoesOrientacaoTela()
+	app.tempoCorrecaoTela = new Date()
+	app.correcaoTela()
 }
 
 $(document).on('deviceready', mainReady)
 $(document).ready(app.correcoesOrientacaoTela)
+$(document).load(app.correcoesOrientacaoTela)
+window.resize = app.correcoesOrientacaoTela
 
 jQuery.fn.visible = function() {
     return this.css('visibility', 'visible')

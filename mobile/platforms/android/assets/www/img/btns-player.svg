@@ -11,6 +11,12 @@
    version="1.1"
    viewBox="0 0 273.64899 205.99876"
    id="btns-player">
+   <style>
+    g {
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-tap-highlight-color: transparent;
+    }
+   </style>
   <defs
      id="defs71660">
     <linearGradient
